@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 currentScale;
 
     private bool isGrounded;
+    private bool isSprinting;
 
     //WallJump System
     private bool isWallLeft;
@@ -62,11 +63,12 @@ public class PlayerMovement : MonoBehaviour
         if (!WallJumpLock)
         { 
             //Déplacement horizontaux
-            if (Input.GetButton("Horizontal") && isGrounded)
+            if (Input.GetButton("Horizontal") && isGrounded && !isSprinting)
                 {
                     rb.linearVelocityX = Input.GetAxisRaw("Horizontal") * _speed;
                 }
-            else if (Input.GetButton("Horizontal") && !isGrounded)
+            
+            else if ( (Input.GetButton("Horizontal") && !isGrounded) || (Input.GetButton("Horizontal") && isSprinting))
             {
                 rb.linearVelocityX = Input.GetAxisRaw("Horizontal") * (_speed * 2);
             }
@@ -88,11 +90,15 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocityY = 0;
         }
 
-
+        //Gestion de pression de touche externe pour différents états comme le sprint ou le blocage de rotation
         if (Input.GetButton("Fire1"))
             canFlip = false;
-        
+
+        if (Input.GetButton("Sprint"))
+            isSprinting = true;
+
         else
+            isSprinting = false;
             canFlip = true;
 
         if (canFlip)
