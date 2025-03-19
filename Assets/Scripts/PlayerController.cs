@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer skin;
-    private BoxCollider2D monCollider;
+    private CapsuleCollider2D monCollider;
 
     private bool canFlip = true;
     private bool isFacingRight = true;
@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isWallLeft;
     private bool isWallRight;
     private bool WallJumpLock;
+
+    private bool isRoof;
 
     void Start()
     {
@@ -90,6 +92,12 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocityY = 0;
         }
 
+        //Déplacement sur plafond
+        if (Input.GetAxisRaw("Vertical") == -1 && isRoof)
+        {
+            rb.gravityScale = 4;
+        }
+
         //Gestion de pression de touche externe pour différents états comme le sprint ou le blocage de rotation
         if (Input.GetButton("Fire1"))
             canFlip = false;
@@ -146,8 +154,10 @@ public class PlayerMovement : MonoBehaviour
             WallJumpLock = true;
             StartCoroutine(JumpMovementCooldown());
         }
+
+        //Impossible de sauter si on est contre un plafond (pour éviter de consommer les charges de sauts
         //Saut normal 
-        else if (Input.GetButtonDown("Jump") && _currentJump < _limiteJump)
+        else if (Input.GetButtonDown("Jump") && _currentJump < _limiteJump && !isRoof)
         {
             rb.linearVelocityY = _forceJump;
             _currentJump++;
@@ -161,11 +171,13 @@ public class PlayerMovement : MonoBehaviour
         WallJumpLock = false;
     }
 
+    //Dès qu'on quitte les collision nos marqueurs passent en false
     private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
         isWallLeft = false;
         isWallRight = false;
+        isRoof = false;
 
         rb.gravityScale = 4;
     }
@@ -198,6 +210,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 isWallLeft = true;
                 rb.linearVelocityY = 0;
+                rb.gravityScale = 0;
+            }
+
+            if ( normal == Vector3.down )
+            {
+                isRoof = true;
+                rb.linearVelocityX = 0;
                 rb.gravityScale = 0;
             }
         }
