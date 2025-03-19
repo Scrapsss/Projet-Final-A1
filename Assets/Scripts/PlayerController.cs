@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,27 +7,38 @@ public class PlayerMovement : MonoBehaviour
     [Header("MOVE")]
     [SerializeField]private int _speed = 2;
 
+
     [Header("JUMP")]
     [SerializeField] private float _forceJump = 5;
     [SerializeField] private int _currentJump = 0;
     [SerializeField] private int _limiteJump = 2;
 
     [Header("WALL")]
-    [SerializeField] public float _distanceDW;
-    [SerializeField] public LayerMask detectWall;
+    [SerializeField] private float _distanceDW;
+    [SerializeField] private LayerMask detectWall;
 
     private Rigidbody2D rb;
-    private Transform transform;
     private SpriteRenderer skin;
-    
+    private BoxCollider2D monCollider;
 
     private bool canFlip = true;
+    private bool isFacingRight = true;
+    private Vector3 currentScale;
+
+    private bool isGrounded;
+
+    //WallJump System
+    private bool isWallLeft;
+    private bool isWallRight;
+    private bool WallJumpLock;
 
     void Start()
     {
         TryGetComponent(out rb);
-        TryGetComponent(out transform);
         TryGetComponent(out skin);
+        TryGetComponent(out monCollider);
+
+        currentScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -41,19 +53,40 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 direction = Input.GetAxisRaw("Horizontal") * Vector2.right;
         var hit = Physics2D.BoxCast(transform.position,Vector2.one, 0, direction, _distanceDW, detectWall);
-        
-        Debug.DrawRay(transform.position, direction * _distanceDW);
 
 
         if (hit.collider != null)
             return;
-
-
-
-        if (Input.GetButton("Horizontal"))
+        
+        //Quand on sort d'un saut mural on ne peut pas bouger pendant un certain moment
+        if (!WallJumpLock)
+        { 
+            //Déplacement horizontaux
+            if (Input.GetButton("Horizontal") && isGrounded)
+                {
+                    rb.linearVelocityX = Input.GetAxisRaw("Horizontal") * _speed;
+                }
+            else if (Input.GetButton("Horizontal") && !isGrounded)
             {
-                transform.position += Vector3.right * Input.GetAxisRaw("Horizontal") * _speed * Time.deltaTime;
+                rb.linearVelocityX = Input.GetAxisRaw("Horizontal") * (_speed * 2);
             }
+        
+            if (Input.GetButtonUp("Horizontal"))
+            {
+                rb.linearVelocityX = 0;
+            }
+        }
+
+        //Déplacement verticaux
+        if (Input.GetButton("Vertical") && (isWallLeft || isWallRight) )
+            {
+                rb.linearVelocityY = Input.GetAxisRaw("Vertical") * _speed;
+            }
+
+        if (Input.GetButtonUp("Vertical") && ( isWallLeft || isWallRight) )
+        {
+            rb.linearVelocityY = 0;
+        }
 
 
         if (Input.GetButton("Fire1"))
@@ -64,13 +97,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (canFlip)
         {
-            if (Input.GetAxisRaw("Horizontal") == -1)
+            //Si on va à gauche
+            if ( (rb.linearVelocityX < 0) && isFacingRight == true)
                 {
-                    transform.localScale = new Vector3(-1,1,1);
+                    currentScale.x = -currentScale.x;
+                    transform.localScale = currentScale;
+                    isFacingRight = false;
                 }
-            else if (Input.GetAxisRaw("Horizontal") == 1)
+            //Sinon si on va à droite
+            else if ( (rb.linearVelocityX >0) && isFacingRight == false)
                 {
-                    transform.localScale = new Vector3(1,1,1);
+                    currentScale.x = -currentScale.x;
+                    transform.localScale = currentScale;
+                isFacingRight = true;
                 }
         }
         
@@ -79,19 +118,82 @@ public class PlayerMovement : MonoBehaviour
     //Fonction pour sauter
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && _currentJump < _limiteJump)
+        //Saut mural
+        //Wall jump vers la droite
+        if (Input.GetButtonDown("Jump") && isWallLeft)
         {
-            rb.linearVelocity = Vector2.up * _forceJump;
+            rb.linearVelocityY = _forceJump;
+
+            //On force le personnage à s'éloigner du mur
+            rb.linearVelocityX = 1 * _speed;
+
+            //Ici on viens bloquer les contrôle de déplacement pendant quelques temps pour laisser le personnage se détacher du mur
+            WallJumpLock = true;
+            StartCoroutine(JumpMovementCooldown());
+        }
+        //WallJump vers la gauche
+        else if (Input.GetButtonDown("Jump") && isWallRight)
+        {
+            rb.linearVelocityY = _forceJump;
+            rb.linearVelocityX = -1 * _speed;
+
+            WallJumpLock = true;
+            StartCoroutine(JumpMovementCooldown());
+        }
+        //Saut normal 
+        else if (Input.GetButtonDown("Jump") && _currentJump < _limiteJump)
+        {
+            rb.linearVelocityY = _forceJump;
             _currentJump++;
         }
     }
 
-    //On check les collision avec le sol pour pouvoir reset notre nombre de saut à 0
+    //On patiente 0.25 secondes avant de débloquer les contrôle de déplacements
+    IEnumerator JumpMovementCooldown()
+    {
+        yield return new WaitForSeconds(0.25f);
+        WallJumpLock = false;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isGrounded = false;
+        isWallLeft = false;
+        isWallRight = false;
+
+        rb.gravityScale = 4;
+    }
+
+
+    //On check quelle collision on touche pour savoir quoi faire
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            _currentJump = 0;
+            //On viens mesurer quelle collision on touche en premier
+            Vector3 normal = collision.GetContact(0).normal;
+
+            //Si c'est le haut de la collision alors on peut marcher dessus
+            if (normal == Vector3.up)
+            {
+                isGrounded = true;
+                _currentJump = 0;
+            }
+
+            //Si c'est la gauche ou la droite alors on grimpe sur le mur et on désactive la gravité pour ne pas tomber
+            if ( normal == Vector3.left )
+            {
+                isWallRight = true;
+                rb.linearVelocityY = 0;
+                rb.gravityScale = 0;
+            }
+
+            if ( normal == Vector3.right )
+            {
+                isWallLeft = true;
+                rb.linearVelocityY = 0;
+                rb.gravityScale = 0;
+            }
         }
     }
 
