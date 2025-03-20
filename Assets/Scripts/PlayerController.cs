@@ -1,5 +1,7 @@
 using System.Collections;
+using System;
 using UnityEngine;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer skin;
     private CapsuleCollider2D monCollider;
 
-    private bool canFlip = true;
+    private bool canFlip;
     private bool isFacingRight = true;
     private Vector3 currentScale;
 
@@ -82,12 +84,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Déplacement verticaux
-        if (Input.GetButton("Vertical") && (isWallLeft || isWallRight) )
+        if (Input.GetButton("Vertical") && (isWallLeft || isWallRight) && !isGrounded )
             {
                 rb.linearVelocityY = Input.GetAxisRaw("Vertical") * _speed;
             }
 
-        if (Input.GetButtonUp("Vertical") && ( isWallLeft || isWallRight) )
+        if (Input.GetButtonUp("Vertical") && ( isWallLeft || isWallRight) && !isGrounded )
         {
             rb.linearVelocityY = 0;
         }
@@ -101,29 +103,33 @@ public class PlayerMovement : MonoBehaviour
         //Gestion de pression de touche externe pour différents états comme le sprint ou le blocage de rotation
         if (Input.GetButton("Fire1"))
             canFlip = false;
+        
+        else
+            canFlip = true;
+
 
         if (Input.GetButton("Sprint"))
             isSprinting = true;
 
         else
             isSprinting = false;
-            canFlip = true;
+            
 
         if (canFlip)
         {
             //Si on va à gauche
-            if ( (rb.linearVelocityX < 0) && isFacingRight == true)
+            if ( ( Math.Round(rb.linearVelocityX) < 0) && isFacingRight == true)
                 {
                     currentScale.x = -currentScale.x;
                     transform.localScale = currentScale;
                     isFacingRight = false;
                 }
             //Sinon si on va à droite
-            else if ( (rb.linearVelocityX >0) && isFacingRight == false)
+            else if ( ( Math.Round(rb.linearVelocityX) > 0) && isFacingRight == false)
                 {
                     currentScale.x = -currentScale.x;
                     transform.localScale = currentScale;
-                isFacingRight = true;
+                    isFacingRight = true;
                 }
         }
         
@@ -134,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Saut mural
         //Wall jump vers la droite
-        if (Input.GetButtonDown("Jump") && isWallLeft)
+        if (Input.GetButtonDown("Jump") && isWallLeft && !isGrounded)
         {
             rb.linearVelocityY = _forceJump;
 
@@ -146,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(JumpMovementCooldown());
         }
         //WallJump vers la gauche
-        else if (Input.GetButtonDown("Jump") && isWallRight)
+        else if (Input.GetButtonDown("Jump") && isWallRight && !isGrounded)
         {
             rb.linearVelocityY = _forceJump;
             rb.linearVelocityX = -1 * _speed;
@@ -155,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(JumpMovementCooldown());
         }
 
-        //Impossible de sauter si on est contre un plafond (pour éviter de consommer les charges de sauts
+        //Impossible de sauter si on est contre un plafond (pour éviter de consommer les charges de sauts )
         //Saut normal 
         else if (Input.GetButtonDown("Jump") && _currentJump < _limiteJump && !isRoof)
         {
@@ -191,13 +197,6 @@ public class PlayerMovement : MonoBehaviour
             //On viens mesurer quelle collision on touche en premier
             Vector3 normal = collision.GetContact(0).normal;
 
-            //Si c'est le haut de la collision alors on peut marcher dessus
-            if (normal == Vector3.up)
-            {
-                isGrounded = true;
-                _currentJump = 0;
-            }
-
             //Si c'est la gauche ou la droite alors on grimpe sur le mur et on désactive la gravité pour ne pas tomber
             if ( normal == Vector3.left )
             {
@@ -219,6 +218,18 @@ public class PlayerMovement : MonoBehaviour
                 rb.linearVelocityX = 0;
                 rb.gravityScale = 0;
             }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Vector3 normal = collision.GetContact(0).normal;
+
+        //Si c'est le haut de la collision alors on peut marcher dessus
+            if (normal == Vector3.up)
+        {
+            isGrounded = true;
+            _currentJump = 0;
         }
     }
 
