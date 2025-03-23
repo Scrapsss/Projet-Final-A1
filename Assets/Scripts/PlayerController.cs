@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer skin;
-    private CapsuleCollider2D monCollider;
+    private BoxCollider2D monCollider;
 
     private bool canFlip;
     private bool isFacingRight = true;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
     private bool isSprinting;
+    private bool isCrouch;
 
     //WallJump System
     private bool isWallLeft;
@@ -41,12 +43,17 @@ public class PlayerMovement : MonoBehaviour
 
     //ShadowSystem
     private bool inShadow;
+    public GameObject line;
+    private LineCollider lineScript;
+    public LayerMask ignoreLayer;
 
     void Start()
     {
         TryGetComponent(out rb);
         TryGetComponent(out skin);
         TryGetComponent(out monCollider);
+
+        lineScript = line.GetComponent<LineCollider>();
 
         currentScale = transform.localScale;
     }
@@ -63,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         Vector3 direction = Input.GetAxisRaw("Horizontal") * Vector2.right;
-        var hit = Physics2D.BoxCast(transform.position,Vector2.one, 0, direction, _distanceDW, detectWall);
+        var hit = Physics2D.BoxCast(transform.position,Vector2.one / 2, 0, direction, _distanceDW, detectWall);
 
 
         if ( (hit.collider != null) && !(isWallLeft || isWallRight) )
@@ -122,6 +129,8 @@ public class PlayerMovement : MonoBehaviour
 
         else
             isSprinting = false;
+
+
             
 
         if (canFlip)
@@ -194,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ShadowTeleport()
     {
+
         if (inShadow)
         {
             //C'est la touche E
@@ -205,24 +215,46 @@ public class PlayerMovement : MonoBehaviour
             {
                 ShadowTP_Stance = false;
                 MovementLock = false;
+
+                lineScript.StopDrawLine();
+                
             }
 
             //Gestion de la TP
             if (ShadowTP_Stance)
             {
                 MovementLock = true;
+                rb.linearVelocityX = 0;
 
-                //Ici on vient chercher la position de notre souris par rapport au monde
-                Vector3 screenPoint = Input.mousePosition;
+                //Si jamais la ligne croise un mur on ne peut pas se tp                
+                if ( !lineScript.DrawLine() )
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        //Ici on viens chercher sur quel objet on clic
+                        Ray clicray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                        RaycastHit2D hit = Physics2D.Raycast(clicray.origin, clicray.direction, Mathf.Infinity, ~ignoreLayer);
+
+                        if (hit.collider != null)
+                        {
+                            //Si c'est une zone d'ombre alors on peut se tp
+                            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Shadow"))
+                            {
+                                //Ici on vient chercher la position de notre souris par rapport au monde
+                                Vector3 screenPoint = Input.mousePosition;
+
+                                //On précise la distance entre la caméra et le monde qui est de 10 unités
+                                screenPoint.z = 10;
+                                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
+
+                                transform.position = worldPoint;
+                            }
+                        }
+                    }
+                }
+
                 
-                //On précise la distance entre la caméra et le monde qui est de 10 unités
-                screenPoint.z = 10;
-                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
-
-                //Et ensuite on dessine une ligne entre le joueur et la position de la souris
-                Debug.DrawLine(transform.position, worldPoint);
-
-
             }
         }
         
