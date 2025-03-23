@@ -138,11 +138,15 @@ public class PlayerMovement : MonoBehaviour
             currentScale.y /= 2;
             transform.localScale = currentScale;
             _speed /= 2;
-            tryUncrouch = false;
+            
         }
         else if (Input.GetKeyUp(KeyCode.C))
         {
             tryUncrouch = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            tryUncrouch = false;
         }
 
         if (tryUncrouch)
