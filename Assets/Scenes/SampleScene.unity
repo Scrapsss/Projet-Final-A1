@@ -1239,9 +1239,9 @@ GameObject:
   m_Component:
   - component: {fileID: 783393416}
   - component: {fileID: 783393415}
-  - component: {fileID: 783393418}
   - component: {fileID: 783393412}
   - component: {fileID: 783393417}
+  - component: {fileID: 783393418}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1371,8 +1371,8 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!70 &783393418
-CapsuleCollider2D:
+--- !u!61 &783393418
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1406,8 +1406,17 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 0.99999994}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &847419798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2049,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

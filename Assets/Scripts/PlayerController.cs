@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isSprinting;
     private bool isCrouch;
+    private bool tryUncrouch;
 
     //WallJump System
     private bool isWallLeft;
@@ -131,7 +132,33 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = false;
 
 
-            
+        if (Input.GetKeyDown(KeyCode.C) && !isCrouch)
+        {
+            isCrouch = true;
+            currentScale.y /= 2;
+            transform.localScale = currentScale;
+            _speed /= 2;
+            tryUncrouch = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.C))
+        {
+            tryUncrouch = true;
+        }
+
+        if (tryUncrouch)
+        {
+            if (!Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + currentScale.y), currentScale.y, detectWall))
+            {
+                isCrouch = false;
+                currentScale.y *= 2;
+                transform.localScale = currentScale;
+                _speed *= 2;
+                tryUncrouch = false;
+            }
+        }
+
+
+
 
         if (canFlip)
         {
