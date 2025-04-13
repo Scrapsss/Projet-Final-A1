@@ -91,7 +91,7 @@ public class EnemyController : MonoBehaviour
             case STATE.MOVE:
 
                 //ici on fait le code la patrouille, ça c'est le déplacement
-                transform.position += Vector3.right * Time.deltaTime * data.speed * direction;
+                transform.position += Vector3.right * Time.deltaTime * data.stats.speed * direction;
 
                 //Maintenant on va faire le faire patrouiller entre 2 points tout en rajoutant des sécurités au cas où il sortirait de la portée de sa patrouille
                 if (direction >= 1)
