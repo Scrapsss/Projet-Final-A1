@@ -8,6 +8,9 @@ using Unity.VisualScripting;
 public class PlayerMovement : MonoBehaviour
 {
 
+    private CameraController ScriptCamera;
+    private Camera CameraFOV;
+
     [Header("MOVE")]
     [SerializeField]private int _speed = 2;
 
@@ -57,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         lineScript = line.GetComponent<LineCollider>();
 
         currentScale = transform.localScale;
+        ScriptCamera = Camera.main.GetComponent<CameraController>();
+        CameraFOV = Camera.main.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -366,10 +371,20 @@ public class PlayerMovement : MonoBehaviour
         {
             inShadow = true;
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("ObservPoint"))
+        {
+            ObservPointManager newTarget = collision.GetComponent<ObservPointManager>();
+            ScriptCamera.ChangeTarget( newTarget.Destination );
+            CameraFOV.orthographicSize = 20;
+            
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         inShadow = false;
+        ScriptCamera.ChangeTarget( transform );
+        CameraFOV.orthographicSize = 10;
     }
 }

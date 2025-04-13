@@ -5,15 +5,10 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 _offset;
-    [SerializeField] private float _smoothTime = 0.3f;
+    [SerializeField] private float _smoothTime = 0.2f;
 
 
     private Vector3 _velocity;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,5 +17,10 @@ public class CameraController : MonoBehaviour
         targetPos.z = transform.position.z;
 
         transform.position = targetPos;
+    }
+
+    public void ChangeTarget( Transform Newtarget )
+    {
+       target = Newtarget;
     }
 }
