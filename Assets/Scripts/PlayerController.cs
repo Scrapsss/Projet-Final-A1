@@ -305,7 +305,7 @@ public class PlayerMovement : MonoBehaviour
         isWallRight = false;
         isRoof = false;
 
-        rb.gravityScale = 4;
+        rb.gravityScale = 3;
     }
 
 
@@ -384,7 +384,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inShadow = false;
-        ScriptCamera.ChangeTarget( transform );
-        CameraFOV.orthographicSize = 10;
+        //ScriptCamera.ChangeTarget( transform );
+        //CameraFOV.orthographicSize = 10;
     }
 }

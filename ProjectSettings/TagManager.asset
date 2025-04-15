@@ -3,21 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Ground
+  - Ombre
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Collectible
-  - 
-  - LineCollider
-  - 
   - Ground
+  - Player
+  - LineCollider
   - Shadow
   - ObservPoint
+  - 
+  - 
   - 
   - 
   - 
