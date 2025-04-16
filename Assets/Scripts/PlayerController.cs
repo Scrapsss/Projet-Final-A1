@@ -242,14 +242,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Fire2") && !ShadowTP_Stance && isGrounded)
             {
                 ShadowTP_Stance = true;
+                
             }
             else if (Input.GetButtonDown("Fire2") && ShadowTP_Stance)
             {
                 ShadowTP_Stance = false;
-                MovementLock = false;
-
-                lineScript.StopDrawLine();
-                
             }
 
             //Gestion de la TP
@@ -257,6 +254,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 MovementLock = true;
                 rb.linearVelocityX = 0;
+                ScriptCamera.ShadowCamera();
 
                 //Si jamais la ligne croise un mur on ne peut pas se tp                
                 if ( !lineScript.DrawLine() )
@@ -281,12 +279,21 @@ public class PlayerMovement : MonoBehaviour
                                 Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
 
                                 transform.position = worldPoint;
+                                ShadowTP_Stance = false;
                             }
                         }
                     }
                 }
 
                 
+            }
+            else
+            {
+                ShadowTP_Stance = false;
+                MovementLock = false;
+
+                lineScript.StopDrawLine();
+                ScriptCamera.ChangeTarget(transform);
             }
         }
         
@@ -376,7 +383,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ObservPointManager newTarget = collision.GetComponent<ObservPointManager>();
             ScriptCamera.ChangeTarget( newTarget.Destination );
-            CameraFOV.orthographicSize = 20;
+            CameraFOV.orthographicSize = 10;
             
         }
     }
@@ -384,7 +391,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inShadow = false;
-        //ScriptCamera.ChangeTarget( transform );
-        //CameraFOV.orthographicSize = 10;
+        ScriptCamera.ChangeTarget( transform );
+        CameraFOV.orthographicSize = 5;
     }
 }

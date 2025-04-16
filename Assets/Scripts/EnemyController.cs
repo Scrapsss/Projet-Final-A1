@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 // Exemple d'opération ternaire
 // public Vector2 direction => DirectionMode = MOVE_DIR HORINZONTAL ? Vector2.right : Vector2.up;
@@ -24,13 +25,18 @@ public class EnemyController : MonoBehaviour
     private Vector3 LimiteDroite;
     private Vector3 LimiteGauche;
 
+    private Vector3 currentScale;
+
+    //Gestion de la vision
+    private GameObject Target;
+
     public enum STATE
     {
         NONE,
         INIT,
         IDLE,
         MOVE,
-        FOLLOW,
+        CHASE,
         FIRE,
         DEATH
     }
@@ -55,6 +61,8 @@ public class EnemyController : MonoBehaviour
 
         LimiteDroite = new Vector3(transform.position.x + LimitePatrouilleDroite, transform.position.y, transform.position.z);
         LimiteGauche = new Vector3(transform.position.x - LimitePatrouilleGauche, transform.position.y, transform.position.z);
+
+        currentScale = transform.localScale;
     }
 
     private void Init()
@@ -66,7 +74,16 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if ( _state < STATE.INIT )
+
+        StateManager();
+        FlipCheck();
+        
+    }
+
+    //Gestion de l'état de l'ennemi
+    private void StateManager()
+    {
+        if (_state < STATE.INIT)
             return;
 
         switch (_state)
@@ -83,15 +100,18 @@ public class EnemyController : MonoBehaviour
                     _state = STATE.MOVE;
                     _countdown = 0;
 
-                }
-                    
 
+                }
+
+                rb.linearVelocityX = 0;
                 _countdown += Time.deltaTime;
                 break;
+
+
             case STATE.MOVE:
 
                 //ici on fait le code la patrouille, ça c'est le déplacement
-                transform.position += Vector3.right * Time.deltaTime * data.stats.speed * direction;
+                rb.linearVelocityX = data.stats.speed * direction;
 
                 //Maintenant on va faire le faire patrouiller entre 2 points tout en rajoutant des sécurités au cas où il sortirait de la portée de sa patrouille
                 if (direction >= 1)
@@ -100,7 +120,7 @@ public class EnemyController : MonoBehaviour
                     {
                         _state = STATE.IDLE;
                         direction *= -1;
-                    }       
+                    }
                 }
                 else if (transform.position.x <= LimiteGauche.x)
                 {
@@ -114,7 +134,11 @@ public class EnemyController : MonoBehaviour
 
 
                 break;
-            case STATE.FOLLOW:
+            case STATE.CHASE:
+                Vector2 ChaseDirection = ((Vector2)Target.transform.position - (Vector2)transform.position).normalized;
+                rb.linearVelocityX = ChaseDirection.x * data.stats.speed;
+
+
                 break;
             case STATE.FIRE:
                 break;
@@ -123,11 +147,53 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void FlipCheck()
+    {
+        // Gestion de l'orientation de l'ennemi
+        //Si on va à gauche
+        if (rb.linearVelocityX < 0)
+        {
+            currentScale.x = -Math.Abs(currentScale.x);
+            transform.localScale = currentScale;
+        }
+        //Sinon si on va à droite
+        else if (rb.linearVelocityX > 0)
+        {
+            currentScale.x = Math.Abs(currentScale.x);
+            transform.localScale = currentScale;
+        }
+    }
+
+    private IEnumerator ReturnToIdle()
+    {
+        yield return new WaitForSeconds(2);
+        _state = STATE.IDLE;
+    }
+
+    public void VisionEnter(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            _state = STATE.CHASE;
+            Target = collision.gameObject;
+
+            StopCoroutine(ReturnToIdle());
+        }
+    }
+
+    public void VisionExit(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            StartCoroutine(ReturnToIdle());
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.TransformPoint(LimiteDroite) ,1f);
+        Gizmos.DrawWireSphere(LimiteDroite, 0.5f);
         Gizmos.DrawLine(LimiteDroite, LimiteGauche);
-        Gizmos.DrawWireSphere(transform.TransformPoint(LimiteGauche),1f);
+        Gizmos.DrawWireSphere(LimiteGauche, 0.5f);
     }
 }
