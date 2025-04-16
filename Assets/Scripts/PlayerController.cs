@@ -8,6 +8,9 @@ using Unity.VisualScripting;
 public class PlayerMovement : MonoBehaviour
 {
 
+    private CameraController ScriptCamera;
+    private Camera CameraFOV;
+
     [Header("MOVE")]
     [SerializeField]private int _speed = 2;
 
@@ -57,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         lineScript = line.GetComponent<LineCollider>();
 
         currentScale = transform.localScale;
+        ScriptCamera = Camera.main.GetComponent<CameraController>();
+        CameraFOV = Camera.main.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -241,14 +246,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Fire2") && !ShadowTP_Stance && isGrounded)
             {
                 ShadowTP_Stance = true;
+                
             }
             else if (Input.GetButtonDown("Fire2") && ShadowTP_Stance)
             {
                 ShadowTP_Stance = false;
-                MovementLock = false;
-
-                lineScript.StopDrawLine();
-                
             }
 
             //Gestion de la TP
@@ -256,6 +258,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 MovementLock = true;
                 rb.linearVelocityX = 0;
+                ScriptCamera.ShadowCamera();
 
                 //Si jamais la ligne croise un mur on ne peut pas se tp                
                 if ( !lineScript.DrawLine() )
@@ -280,12 +283,21 @@ public class PlayerMovement : MonoBehaviour
                                 Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
 
                                 transform.position = worldPoint;
+                                ShadowTP_Stance = false;
                             }
                         }
                     }
                 }
 
                 
+            }
+            else
+            {
+                ShadowTP_Stance = false;
+                MovementLock = false;
+
+                lineScript.StopDrawLine();
+                ScriptCamera.ChangeTarget(transform);
             }
         }
         
@@ -304,7 +316,7 @@ public class PlayerMovement : MonoBehaviour
         isWallRight = false;
         isRoof = false;
 
-        rb.gravityScale = 4;
+        rb.gravityScale = 3;
     }
 
 
@@ -370,10 +382,20 @@ public class PlayerMovement : MonoBehaviour
         {
             inShadow = true;
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("ObservPoint"))
+        {
+            ObservPointManager newTarget = collision.GetComponent<ObservPointManager>();
+            ScriptCamera.ChangeTarget( newTarget.Destination );
+            CameraFOV.orthographicSize = 10;
+            
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         inShadow = false;
+        ScriptCamera.ChangeTarget( transform );
+        CameraFOV.orthographicSize = 5;
     }
 }
