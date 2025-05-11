@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// On va gérer tout ce qui touche au mouvement de notre personnage :
@@ -305,6 +306,19 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("Velocity_Y", _rigidBody.linearVelocityY);
     }
 
+    public void Die()
+    {
+        MovementLock = true;
+        print("Vous êtes mort");
+        StartCoroutine(RestartLevel());
+    }
+
+    IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // On relance la scène actuelle soit le niveau dans lequel on joue
+    }
+
     //Gestion des collisions
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -317,6 +331,15 @@ public class PlayerController : MonoBehaviour
                 _isGrounded = true;
                 _jumpCount = 0;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Door"))
+        {
+            print("Vous avez trouvé la sortie (Condition de victoire pour l'instant)");
+            StartCoroutine(RestartLevel());
         }
     }
 

@@ -93,6 +93,7 @@ public class PlayerPower : MonoBehaviour
 
                         if (hit.collider != null)
                         {
+                            print(hit.collider.gameObject.layer);
                             //Si c'est une zone d'ombre alors on peut se tp
                             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Shadow"))
                             {

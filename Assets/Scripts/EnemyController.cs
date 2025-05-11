@@ -155,6 +155,7 @@ public class EnemyController : MonoBehaviour
         switch (_state)
         {
             case STATE.NONE:
+                IsMoving = false;
                 break;
             case STATE.INIT:
                 _state = STATE.IDLE;
@@ -264,6 +265,15 @@ public class EnemyController : MonoBehaviour
     }
 
     //Gestion des collisions
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().Die(); // On lance la séquence de mort du joueur si on le touche
+            _state = STATE.NONE;
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         //On vérifie si l'objet qu'on touche fait partie des murs du jeu
