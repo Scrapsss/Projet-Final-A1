@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /// <summary>
@@ -10,17 +12,11 @@ public class PlayerPower : MonoBehaviour
     public Rigidbody2D rb;
     public Camera mainCamera;
     public PlayerController playerController;
-
-    private EdgeCollider2D collider;
-    private LineRenderer line;
-    public LayerMask ignoreLayer;
-
-    private Vector3[] Vect3List;
-    private Vector2[] Vect2List;
-
-    private bool isTriggered;
+    private CameraController cameraController;
+    private LineController lineController;
 
     
+    public LayerMask ignoreLayer;
 
     private bool _shadowTPStance;
     public bool ShadowTP_Stance
@@ -35,28 +31,32 @@ public class PlayerPower : MonoBehaviour
         }
     }
 
+    public GameObject RockPrefab;
+    public float LancerMax; //Puissance max du lancer
+    public float ForceDistance;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
-        line = GetComponent<LineRenderer>();
-        collider = GetComponent<EdgeCollider2D>();
+        lineController = GameObject.Find("TeleportLine").GetComponent<LineController>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Vect3List = new Vector3[2];
-        Vect2List = new Vector2[2];
+        cameraController = GameObject.Find("CinemachineCamera").GetComponent<CameraController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         ShadowTeleport();
+        ThrowRock();
     }
 
+    //Pouvoir de téléportation des ombres
     private void ShadowTeleport()
     {
 
@@ -79,10 +79,10 @@ public class PlayerPower : MonoBehaviour
                 playerController.MovementLock = true;
                 playerController.IsMoving = false;
                 rb.linearVelocityX = 0;
-                //ScriptCamera.ShadowCamera();
+                cameraController.ShadowCamera();
 
                 //Si jamais la ligne croise un mur on ne peut pas se tp                
-                if (!DrawLine())
+                if (!lineController.DrawLine())
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -117,69 +117,62 @@ public class PlayerPower : MonoBehaviour
             {
                 ShadowTP_Stance = false;
                 playerController.MovementLock = false;
-
-                StopDrawLine();
-                //ScriptCamera.ChangeTarget(transform);
+                lineController.StopDrawLine();
             }
         }
 
     }
 
-    public bool DrawLine()
+    private void ThrowRock()
     {
-        //Ici on vient chercher la position de notre souris par rapport au monde
-        Vector3 screenPoint = Input.mousePosition;
-
-        //On précise la distance entre la caméra et le monde qui est de 10 unités
-        screenPoint.z = 10;
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
-
-
-        Vect3List[0] = transform.position;
-        Vect3List[1] = worldPoint;
-
-        line.SetPositions(Vect3List);
-
-        Vect2List[0] = Vector2.zero;
-        Vect2List[1] = worldPoint - transform.position;
-
-        collider.points = Vect2List;
-
-        return isTriggered;
-    }
-    public void StopDrawLine()
-    {
-        Vect3List[0] = transform.position;
-        Vect3List[1] = transform.position;
-
-        line.SetPositions(Vect3List);
-
-        Vect2List[0] = Vector2.zero;
-        Vect2List[1] = Vector2.zero;
-
-        collider.points = Vect2List;
-    }
-
-    //Collision de la ligne
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (Input.GetMouseButton(1))
         {
-            line.startColor = Color.red;
-            line.endColor = Color.red;
+            cameraController.ShadowCamera();
+        }
 
-            isTriggered = true;
+        if (Input.GetMouseButtonUp(1))
+        {
+            Rigidbody2D rock = Instantiate(RockPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+
+            Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //On récupère la position de la souris dans le monde
+            cursorPosition.z = 0; // on règle le Z sinon l'alignement sera pas bon vu que la caméra est à -10
+
+            Vector2 direction = (cursorPosition - transform.position).normalized; // La direction de la souris par rapprot au joueur
+            float distance = Vector2.Distance(cursorPosition, transform.position); // On mesure la distance entre les deux
+
+            distance = Mathf.Min(distance, LancerMax); // on cap la puissance du lancer
+            float puissance = Mathf.Lerp(0, LancerMax, distance / ForceDistance);
+
+            rock.AddForce(direction * puissance, ForceMode2D.Impulse);
+        }
+
+        
+        
+
+    }
+
+    IEnumerator ExecuteWaiting(GameObject enemy)
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(enemy);
+        playerController.MovementLock = false;
+    }
+
+    public void CanExecute(GameObject enemy)
+    {
+        if (Input.GetKey("e"))
+        {
+            ExecuteEnemy(enemy);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void ExecuteEnemy(GameObject enemy)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            line.startColor = Color.white;
-            line.endColor = Color.white;
-
-            isTriggered = false;
-        }
+        //Animation de kill 
+        playerController.MovementLock = true;
+        playerController.IsMoving = false;
+        playerController._rigidBody.linearVelocityX = 0;
+        enemy.GetComponent<EnemyController>()._state = EnemyController.STATE.DEATH;
+        StartCoroutine(ExecuteWaiting(enemy));
     }
 }

@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private CameraController _cameraController;
+
     //Les composants
     public Rigidbody2D _rigidBody;
     public Collision2D _collision;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public float _jumpForce;
     public int _maxJumpCount;
     private int _jumpCount;
+    private Vector3 _scale;
     
 
     //Les booléens pour les animations et les détéctions de notre personnage
@@ -62,6 +65,12 @@ public class PlayerController : MonoBehaviour
         set
         { _isMoving = value; }
     }
+    private bool _isRunning;
+    public bool IsRunning
+    {
+        get { return _isRunning; }
+        set { _isRunning = value; }
+    }
     private bool _MovementLock;
     public bool MovementLock
     {
@@ -82,18 +91,38 @@ public class PlayerController : MonoBehaviour
             _inShadow = value;
         }
     }
+    private bool _inObservPoint;
+    public bool InObservPoint
+    {
+        get
+        {
+            return _inObservPoint;
+        }
+        set
+        {
+            _inObservPoint = value;
+        }
+    }
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _scale = transform.localScale;
+    }
+
+    private void Start()
+    {
+        _cameraController = GameObject.Find("CinemachineCamera").GetComponent<CameraController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         AnimationCheck();
+        AdditionalState();
         Jump();
         RoofMove();
     }
@@ -154,30 +183,71 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Avec ça on va gérer les états supplémentaires comme le sprint, l'accroupissement etc
+    private void AdditionalState()
+    {
+        if (Input.GetKey("left shift"))
+        {
+            _isRunning = true;
+        }
+        else
+        {
+            _isRunning = false;
+        }
+    }
+
     //Déplacement gauche droite de base
     private void Move()
     {
         if (!_MovementLock)
         {
-            //Déplacement Horizontal
-            if (Input.GetKey("d"))
+            //Gestion du sprint
+            if (_isRunning)
             {
-                _isMoving = true;
-                //Le 1 équivaut à la direction : Droite
-                _rigidBody.linearVelocityX = 1 * _speed;
+                //Déplacement Horizontal
+                if (Input.GetKey("d"))
+                {
+                    _isMoving = true;
+                    //Le 1 équivaut à la direction : Droite
+                    _rigidBody.linearVelocityX = 1.5f * _speed;
 
-            }
-            else if (Input.GetKey("a"))
-            {
-                _isMoving = true;
-                //Le -1 équivaut à la direction : Gauche
-                _rigidBody.linearVelocityX = -1 * _speed;
+                }
+                else if (Input.GetKey("a"))
+                {
+                    _isMoving = true;
+                    //Le -1 équivaut à la direction : Gauche
+                    _rigidBody.linearVelocityX = -1.5f * _speed;
+                }
+                else
+                {
+
+                    _isMoving = false;
+                    _rigidBody.linearVelocityX = 0;
+                }
             }
             else
             {
-                _isMoving = false;
-                _rigidBody.linearVelocityX = 0;
-            }
+                //Déplacement Horizontal
+                if (Input.GetKey("d"))
+                {
+                    _isMoving = true;
+                    //Le 1 équivaut à la direction : Droite
+                    _rigidBody.linearVelocityX = 1 * _speed;
+
+                }
+                else if (Input.GetKey("a"))
+                {
+                    _isMoving = true;
+                    //Le -1 équivaut à la direction : Gauche
+                    _rigidBody.linearVelocityX = -1 * _speed;
+                }
+                else
+                {
+
+                    _isMoving = false;
+                    _rigidBody.linearVelocityX = 0;
+                }
+            }  
         } 
     }
 
@@ -186,11 +256,13 @@ public class PlayerController : MonoBehaviour
     {
         if (_rigidBody.linearVelocityX < 0)
         {
-            _spriteRenderer.flipX = true;
+            _scale.x = -1;
+            transform.localScale = _scale;
         }
         else if (_rigidBody.linearVelocityX > 0)
         {
-            _spriteRenderer.flipX = false;
+            _scale.x = 1;
+            transform.localScale = _scale;
         }
     }
 
@@ -255,6 +327,12 @@ public class PlayerController : MonoBehaviour
         {
             _inShadow = true;
         }
+        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("ObservPoint") && gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            _inObservPoint = true;
+            _cameraController.ObservPointCamera(collision.gameObject.GetComponent<ObservPointManager>());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -291,6 +369,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         _inShadow = false;
+        _inObservPoint = false;
     }
 
 

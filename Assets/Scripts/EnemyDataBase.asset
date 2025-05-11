@@ -16,20 +16,20 @@ MonoBehaviour:
   - Label: Enemy 1
     stats:
       pv: 20
-      speed: 1
+      speed: 6
       damage: 15
     sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-    color: {r: 0.690566, g: 0.11856887, b: 0.11856887, a: 1}
+    color: {r: 1, g: 0.1716981, b: 0.1716981, a: 1}
     scaleCoef: 1
-    durationIDLE: 1
-    durationWALK: 1
+    durationIDLE: 2
+    durationSOUNDHEARD: 1
   - Label: Enemy 2
     stats:
       pv: 10
       speed: 2
       damage: 10
     sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-    color: {r: 0.10949801, g: 0.6377357, b: 0.44883806, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 0}
     scaleCoef: 1
     durationIDLE: 1
-    durationWALK: 1
+    durationSOUNDHEARD: 1

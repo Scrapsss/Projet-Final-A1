@@ -19,8 +19,8 @@ TagManager:
   - LineCollider
   - Shadow
   - ObservPoint
-  - 
-  - 
+  - Enemy
+  - Rock
   - 
   - 
   - 
