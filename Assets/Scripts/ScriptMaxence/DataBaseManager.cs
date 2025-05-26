@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DataBaseManager : MonoBehaviour
 {
-
     private static DataBaseManager _instance;
 
     public static DataBaseManager Instance => _instance;
@@ -11,12 +10,12 @@ public class DataBaseManager : MonoBehaviour
 
     private void Awake()
     {
-        if ( _instance == null )
+        if (_instance == null)
             _instance = this;
         else
-            Destroy( gameObject );
+            Destroy(gameObject);
 
-        DontDestroyOnLoad( gameObject );
+        DontDestroyOnLoad(gameObject);
     }
 
     public EnemyData GetData(int id) => enemyDataBase.GetData(id);
