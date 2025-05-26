@@ -1,38 +1,37 @@
 using UnityEngine;
-using UnityEngine.U2D;
 
-public class LineCollider : MonoBehaviour
+public class LineController : MonoBehaviour
 {
+    private Transform _playerTransform;
+
     private EdgeCollider2D collider;
     private LineRenderer line;
 
     private Vector3[] Vect3List;
     private Vector2[] Vect2List;
 
-    public GameObject Player;
-    private Transform PlayerTransform;
-
     private bool isTriggered;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        TryGetComponent(out collider);
-        TryGetComponent(out line);
+        line = GetComponent<LineRenderer>();
+        collider = GetComponent<EdgeCollider2D>();
 
+        _playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+
+        //Liste de coordonées pour la ligne et le collider du pouvoir de téléportation des ombres
         Vect3List = new Vector3[2];
         Vect2List = new Vector2[2];
-
-        PlayerTransform = Player.GetComponent<Transform>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = PlayerTransform.position;
+        transform.position = _playerTransform.position;
     }
 
+    //Visuel de la ligne de téléporation
     public bool DrawLine()
     {
         //Ici on vient chercher la position de notre souris par rapport au monde
@@ -90,5 +89,4 @@ public class LineCollider : MonoBehaviour
             isTriggered = false;
         }
     }
-
 }

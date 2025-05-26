@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.UIElements;
 
 // Exemple d'opération ternaire
 // public Vector2 direction => DirectionMode = MOVE_DIR HORINZONTAL ? Vector2.right : Vector2.up;
@@ -14,21 +15,74 @@ public class EnemyController : MonoBehaviour
 
     public int id;
 
-    private Rigidbody2D rb;
-    private SpriteRenderer skin;
-    private BoxCollider2D monCollider2D;
+    private Rigidbody2D _rigidBody;
+    private SpriteRenderer _spriteRenderer;
+    private CapsuleCollider2D _collider;
+    private Animator _animator;
 
     private float direction = 1;
 
+    //Les limites de patrouilles
     public float LimitePatrouilleDroite;
     public float LimitePatrouilleGauche;
     private Vector3 LimiteDroite;
     private Vector3 LimiteGauche;
 
-    private Vector3 currentScale;
+    private Vector3 _scale;
+
+    [SerializeField] private GameObject _executionIcon;
 
     //Gestion de la vision
-    private GameObject Target;
+    public Transform Target;
+    public Vector3 SoundTarget;
+
+    //Les booléens pour les animations et les détéctions de notre personnage (Pareil quand dans notre personnage mais seulement ceux utiles)
+    private bool _isGrounded;
+    public bool IsGrounded
+    {
+        get
+        { return _isGrounded; }
+        set
+        { _isGrounded = value; }
+    }
+    private bool _isMoving;
+    public bool IsMoving
+    {
+        get
+        { return _isMoving; }
+        set
+        { _isMoving = value; }
+    }
+    private bool _isRunning;
+    public bool IsRunning
+    {
+        get { return _isRunning; }
+        set { _isRunning = value; }
+    }
+
+    //InShadow pourrait être utile à un moment donc je le garde
+    private bool _inShadow;
+    public bool InShadow
+    {
+        get
+        {
+            return _inShadow;
+        }
+        set
+        {
+            _inShadow = value;
+        }
+    }
+
+    private bool _isExecutable;
+    public bool IsExecutable
+    {
+        get { return _isExecutable; }
+        set { _isExecutable = value; }
+    }
+
+
+    
 
     public enum STATE
     {
@@ -37,19 +91,25 @@ public class EnemyController : MonoBehaviour
         IDLE,
         MOVE,
         CHASE,
+        SOUNDHEARD,
+        SOUNDCHECK,
         FIRE,
         DEATH
     }
 
-    [SerializeField] private STATE _state;
+    public STATE _state;
 
     private float _countdown;
+    private float _SoundCountdown;
 
     private void Awake()
     {
-        TryGetComponent(out rb);
-        TryGetComponent(out skin);
-        TryGetComponent(out monCollider2D);
+        TryGetComponent(out _rigidBody);
+        TryGetComponent(out _spriteRenderer);
+        TryGetComponent(out _collider);
+        TryGetComponent(out _animator);
+
+        _scale = transform.localScale;
     }
 
 
@@ -61,23 +121,29 @@ public class EnemyController : MonoBehaviour
 
         LimiteDroite = new Vector3(transform.position.x + LimitePatrouilleDroite, transform.position.y, transform.position.z);
         LimiteGauche = new Vector3(transform.position.x - LimitePatrouilleGauche, transform.position.y, transform.position.z);
-
-        currentScale = transform.localScale;
     }
 
     private void Init()
     {
         _state = STATE.INIT;
-        skin.sprite = data.sprite;
-        skin.color = data.color;
+        _spriteRenderer.sprite = data.sprite;
+        _spriteRenderer.color = data.color;
     }
 
     private void Update()
     {
-
         StateManager();
-        FlipCheck();
-        
+        CharacterFacing();
+        AnimationCheck();
+        ExecuteIcon();
+    }
+
+    private void ExecuteIcon()
+    {
+        if (_isExecutable)
+            _executionIcon.SetActive(true);
+        else
+            _executionIcon.SetActive(false);
     }
 
     //Gestion de l'état de l'ennemi
@@ -89,6 +155,7 @@ public class EnemyController : MonoBehaviour
         switch (_state)
         {
             case STATE.NONE:
+                IsMoving = false;
                 break;
             case STATE.INIT:
                 _state = STATE.IDLE;
@@ -99,19 +166,17 @@ public class EnemyController : MonoBehaviour
                 {
                     _state = STATE.MOVE;
                     _countdown = 0;
-
-
                 }
 
-                rb.linearVelocityX = 0;
+                _rigidBody.linearVelocityX = 0;
                 _countdown += Time.deltaTime;
+                _isMoving = false;
                 break;
-
-
             case STATE.MOVE:
 
                 //ici on fait le code la patrouille, ça c'est le déplacement
-                rb.linearVelocityX = data.stats.speed * direction;
+                _rigidBody.linearVelocityX = data.stats.speed * direction;
+                _isMoving = true;
 
                 //Maintenant on va faire le faire patrouiller entre 2 points tout en rajoutant des sécurités au cas où il sortirait de la portée de sa patrouille
                 if (direction >= 1)
@@ -129,71 +194,109 @@ public class EnemyController : MonoBehaviour
                 }
 
                 //Avec cette vérification de direction, même si pour une quelconque raison il dépasse sa portée de patrouille, il va y retourner tout seul pour se remettre dedans
-
-
-
-
                 break;
             case STATE.CHASE:
-                Vector2 ChaseDirection = ((Vector2)Target.transform.position - (Vector2)transform.position).normalized;
-                rb.linearVelocityX = ChaseDirection.x * data.stats.speed;
+                IsMoving = true;
 
+                Vector2 ChaseDirection = ((Vector2)Target.position - (Vector2)transform.position).normalized;
+                _rigidBody.linearVelocityX = ChaseDirection.x * data.stats.speed;
+                break;
+            case STATE.SOUNDHEARD:
+                if (_SoundCountdown > data.durationSOUNDHEARD)
+                {
+                    _state = STATE.SOUNDCHECK;
+                    _SoundCountdown = 0;
+                }
 
+                _rigidBody.linearVelocityX = 0;
+                _SoundCountdown += Time.deltaTime;
+                _isMoving = false;
+                break;
+            case STATE.SOUNDCHECK:
+                IsMoving = true;
+
+                //On mesure la différence entre les deux points
+                float diff = SoundTarget.x - transform.position.x;
+                //On détermine si la différence est négative ou positive
+                direction = Mathf.Sign(diff);
+
+                if (Mathf.Abs(diff) < 0.1f) // On propose un environ autour du point enregistré
+                {
+                    _state = STATE.IDLE;
+                    _countdown = 0;
+                }
+
+                _rigidBody.linearVelocityX = direction * data.stats.speed;
                 break;
             case STATE.FIRE:
                 break;
             case STATE.DEATH:
+                _isMoving = false;
                 break;
         }
     }
 
-    private void FlipCheck()
+    //Les mêmes code que le personnages puisque ce sont des contrôles de bases
+    private void CharacterFacing()
     {
-        // Gestion de l'orientation de l'ennemi
-        //Si on va à gauche
-        if (rb.linearVelocityX < 0)
+        if (_rigidBody.linearVelocityX < 0)
         {
-            currentScale.x = -Math.Abs(currentScale.x);
-            transform.localScale = currentScale;
+            _scale.x = -1;
+            transform.localScale = _scale;
         }
-        //Sinon si on va à droite
-        else if (rb.linearVelocityX > 0)
+        else if (_rigidBody.linearVelocityX > 0)
         {
-            currentScale.x = Math.Abs(currentScale.x);
-            transform.localScale = currentScale;
+            _scale.x = 1;
+            transform.localScale = _scale;
         }
     }
 
-    private IEnumerator ReturnToIdle()
+    private void AnimationCheck()
+    {
+        _animator.SetBool("isMoving", _isMoving);
+        _animator.SetBool("isGrounded", _isGrounded);
+        _animator.SetFloat("Velocity_Y", _rigidBody.linearVelocityY);
+    }
+
+    public IEnumerator ReturnToIdle()
     {
         yield return new WaitForSeconds(2);
         _state = STATE.IDLE;
     }
 
-    public void VisionEnter(Collider2D collision)
+    //Gestion des collisions
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            _state = STATE.CHASE;
-            Target = collision.gameObject;
-
-            StopCoroutine(ReturnToIdle());
+            collision.gameObject.GetComponent<PlayerController>().Die(); // On lance la séquence de mort du joueur si on le touche
+            _state = STATE.NONE;
         }
     }
 
-    public void VisionExit(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        //On vérifie si l'objet qu'on touche fait partie des murs du jeu
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            StartCoroutine(ReturnToIdle());
+            //Si on touche le haut de l'objet c'est un sol
+            if (collision.contacts[0].normal == Vector2.up)
+            {
+                _isGrounded = true;
+            }
         }
     }
+
+    //On reset tout les états de collisions
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _isGrounded = false;
+    }
+
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(LimiteDroite, 0.5f);
         Gizmos.DrawLine(LimiteDroite, LimiteGauche);
-        Gizmos.DrawWireSphere(LimiteGauche, 0.5f);
     }
 }

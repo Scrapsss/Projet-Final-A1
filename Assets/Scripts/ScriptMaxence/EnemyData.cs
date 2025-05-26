@@ -33,5 +33,5 @@ public class EnemyData
 
     [Header("STATE")]
     public float durationIDLE;
-    public float durationWALK;
+    public float durationSOUNDHEARD;
 }
