@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class PlayerPower : MonoBehaviour
 {
 
     public Rigidbody2D rb;
-    public Camera mainCamera;
+    public CinemachineCamera mainCamera;
     public PlayerController playerController;
     private CameraController cameraController;
     private LineController lineController;
@@ -35,6 +36,14 @@ public class PlayerPower : MonoBehaviour
     public float LancerMax; //Puissance max du lancer
     public float ForceDistance;
 
+    [Header("Camera Settings")]
+    [HideInInspector] private float animTime;
+    public float animDuration;
+    private float StartLens;
+    private bool LensAnimate = false;
+
+    private float CameraGoToLens;
+
 
     private void Awake()
     {
@@ -47,6 +56,9 @@ public class PlayerPower : MonoBehaviour
     void Start()
     {
         cameraController = GameObject.Find("CinemachineCamera").GetComponent<CameraController>();
+        mainCamera = cameraController.gameObject.GetComponent<CinemachineCamera>();
+
+        StartLens = mainCamera.Lens.OrthographicSize;
     }
 
     // Update is called once per frame
@@ -54,6 +66,11 @@ public class PlayerPower : MonoBehaviour
     {
         ShadowTeleport();
         ThrowRock();
+
+        if (LensAnimate)
+        {
+            AnimateCameraLens(CameraGoToLens);
+        }
     }
 
     //Pouvoir de téléportation des ombres
@@ -129,11 +146,15 @@ public class PlayerPower : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             cameraController.ShadowCamera();
+            ChangeCameraLens(25);
+            
         }
 
         if (Input.GetMouseButtonUp(1))
         {
+
             Rigidbody2D rock = Instantiate(RockPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            rock.gameObject.GetComponent<RockController>()._playerPower = this; // On viens lui donner la référence à ce script
 
             Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //On récupère la position de la souris dans le monde
             cursorPosition.z = 0; // on règle le Z sinon l'alignement sera pas bon vu que la caméra est à -10
@@ -146,10 +167,27 @@ public class PlayerPower : MonoBehaviour
 
             rock.AddForce(direction * puissance, ForceMode2D.Impulse);
         }
+    }
 
-        
-        
+    public void ChangeCameraLens(float distance)
+    {
+        LensAnimate = true;
+        CameraGoToLens = distance;
+    }
 
+    private void AnimateCameraLens(float distance)
+    {
+        float ratio = animTime / animDuration;
+
+        mainCamera.Lens.OrthographicSize = Mathf.Lerp(StartLens, distance , ratio);
+
+        animTime += Time.deltaTime;
+        if (animTime > animDuration)
+        {
+            animTime = 0;
+            LensAnimate = false;
+            StartLens = distance;
+        }
     }
 
     IEnumerator ExecuteWaiting(GameObject enemy)
