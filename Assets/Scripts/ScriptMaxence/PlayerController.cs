@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public Collision2D _collision;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator FadeOutAnimator;
 
     public float _speed;
     public float _jumpForce;
@@ -270,24 +271,27 @@ public class PlayerController : MonoBehaviour
     //Gestion du saut et des sauts muraux
     private void Jump()
     {
-        if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallLeft)
+        if (!MovementLock)
         {
-            _rigidBody.linearVelocityY = _jumpForce;
-            _rigidBody.linearVelocityX = 1 * _speed;
-            _MovementLock = true;
-            StartCoroutine(MovementLockCooldown());
-        }
-        else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallRight)
-        {
-            _rigidBody.linearVelocityY = _jumpForce;
-            _rigidBody.linearVelocityX = -1 * _speed;
-            _MovementLock = true;
-            StartCoroutine(MovementLockCooldown());
-        }
-        else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount)
-        {
-            _rigidBody.linearVelocityY = _jumpForce;
-            _jumpCount++;
+            if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallLeft)
+            {
+                _rigidBody.linearVelocityY = _jumpForce;
+                _rigidBody.linearVelocityX = 1 * _speed;
+                _MovementLock = true;
+                StartCoroutine(MovementLockCooldown());
+            }
+            else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallRight)
+            {
+                _rigidBody.linearVelocityY = _jumpForce;
+                _rigidBody.linearVelocityX = -1 * _speed;
+                _MovementLock = true;
+                StartCoroutine(MovementLockCooldown());
+            }
+            else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount)
+            {
+                _rigidBody.linearVelocityY = _jumpForce;
+                _jumpCount++;
+            }
         }
     }
 
@@ -310,6 +314,7 @@ public class PlayerController : MonoBehaviour
     {
         MovementLock = true;
         print("Vous êtes mort");
+        FadeOutAnimator.Play("CanvasAnimation");
         StartCoroutine(RestartLevel());
     }
 
