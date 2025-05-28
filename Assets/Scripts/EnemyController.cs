@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
     }
 
     //InShadow pourrait être utile à un moment donc je le garde
-    private bool _inShadow;
+    private bool _inShadow = true;
     public bool InShadow
     {
         get
@@ -334,15 +334,15 @@ public class EnemyController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Si on entre dans une ombre
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Shadow"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
-            _inShadow = true;
+            _inShadow = false;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _inShadow = false;
+        _inShadow = true;
     }
 
     //Gestion des collisions
