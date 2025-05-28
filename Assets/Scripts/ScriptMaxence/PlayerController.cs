@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         set
         { _MovementLock = value; }
     }
-    private bool _inShadow;
+    private bool _inShadow = true;
     public bool InShadow
     {
         get
@@ -381,9 +381,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Si on entre dans une ombre
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Shadow"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
-            _inShadow = true;
+            _inShadow = false;
         }
         
         if (collision.gameObject.layer == LayerMask.NameToLayer("ObservPoint") && gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -426,7 +426,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _inShadow = false;
+        _inShadow = true;
         _inObservPoint = false;
     }
 
