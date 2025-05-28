@@ -191,9 +191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 0}
+  FadeOutAnimator: {fileID: 0}
   _speed: 10
   _jumpForce: 30
   _maxJumpCount: 1
+  _crouchScale: 0.3
 --- !u!114 &1273424017610782712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +217,4 @@ MonoBehaviour:
   RockPrefab: {fileID: 2780452892531774847, guid: c9a6dfe4c85d201489220fc3df73e4be, type: 3}
   LancerMax: 50
   ForceDistance: 20
+  animDuration: 0

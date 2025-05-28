@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public int _maxJumpCount;
     private int _jumpCount;
     private Vector3 _scale;
+    [SerializeField] private float _crouchScale;
     
 
     //Les booléens pour les animations et les détéctions de notre personnage
@@ -72,6 +73,12 @@ public class PlayerController : MonoBehaviour
     {
         get { return _isRunning; }
         set { _isRunning = value; }
+    }
+    private bool _isCrouch;
+    public bool IsCrouch
+    {
+        get { return _isCrouch; }
+        set { _isCrouch = value; }
     }
     private bool _MovementLock;
     public bool MovementLock
@@ -126,6 +133,7 @@ public class PlayerController : MonoBehaviour
         AnimationCheck();
         AdditionalState();
         Jump();
+        Crouch();
         RoofMove();
     }
 
@@ -188,13 +196,36 @@ public class PlayerController : MonoBehaviour
     //Avec ça on va gérer les états supplémentaires comme le sprint, l'accroupissement etc
     private void AdditionalState()
     {
-        if (Input.GetKey("left shift"))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             _isRunning = true;
         }
         else
         {
             _isRunning = false;
+        }
+
+        
+
+    }
+
+    private void Crouch()
+    {
+        if (Input.GetKey(KeyCode.C))
+        {
+            _isCrouch = true;
+            if (Input.GetKeyDown(KeyCode.C))
+                transform.position -= new Vector3(0, 4, 0);
+        }
+        else
+            _isCrouch = false;
+
+        if (IsCrouch) 
+            transform.localScale = new Vector3(transform.localScale.x, _crouchScale, transform.localScale.z);
+        else if (Input.GetKeyUp(KeyCode.C))
+        {
+            transform.localScale = _scale;
+            transform.position -= new Vector3(0, -4, 0);
         }
     }
 
@@ -258,13 +289,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_rigidBody.linearVelocityX < 0)
         {
-            _scale.x = -1;
-            transform.localScale = _scale;
+            transform.localScale = new Vector3( -1, transform.localScale.y, transform.localScale.z);
         }
         else if (_rigidBody.linearVelocityX > 0)
         {
-            _scale.x = 1;
-            transform.localScale = _scale;
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
     }
 
@@ -344,6 +373,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Door"))
         {
             print("Vous avez trouvé la sortie (Condition de victoire pour l'instant)");
+            MovementLock = true;
             StartCoroutine(RestartLevel());
         }
     }
