@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// On va gérer tout ce qui touche au mouvement de notre personnage :
+/// On va gï¿½rer tout ce qui touche au mouvement de notre personnage :
 /// Vitesse
 /// Force de saut, double saut etc..
 /// </summary>
@@ -18,15 +18,17 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator FadeOutAnimator;
+    public GameObject endGamePanel;
 
     public float _speed;
     public float _jumpForce;
     public int _maxJumpCount;
     private int _jumpCount;
     private Vector3 _scale;
+    private FadeManager _fadeManager;
     
 
-    //Les booléens pour les animations et les détéctions de notre personnage
+    //Les boolï¿½ens pour les animations et les dï¿½tï¿½ctions de notre personnage
     private bool _isGrounded;
     public bool IsGrounded
     {
@@ -118,7 +120,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _cameraController = GameObject.Find("CinemachineCamera").GetComponent<CameraController>();
+        _fadeManager = GameObject.FindFirstObjectByType<FadeManager>();
+
     }
+
 
     // Update is called once per frame
     void Update()
@@ -136,7 +141,7 @@ public class PlayerController : MonoBehaviour
         CharacterFacing();
     }
 
-    //Gestion des déplacement muraux
+    //Gestion des dï¿½placement muraux
     private void WallMove()
     {
         if (!_MovementLock)
@@ -144,7 +149,7 @@ public class PlayerController : MonoBehaviour
             if (_isWallLeft || _isWallRight)
             {
                 _rigidBody.gravityScale = 0;
-                //On se déplace de haut en bas (Faut mettre les touches en qwerty pour que ça les captes bien
+                //On se dï¿½place de haut en bas (Faut mettre les touches en qwerty pour que ï¿½a les captes bien
                 if (Input.GetKey("w"))
                 {
                     _rigidBody.linearVelocityY = 1 * _speed;
@@ -160,14 +165,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Reset de la gravité quand on touche pas les murs ou le plafond
+        //Reset de la gravitï¿½ quand on touche pas les murs ou le plafond
         if (!_isWallLeft && !_isWallRight && !_isRoof)
         {
             _rigidBody.gravityScale = 6;
         }
     }
 
-    //Déplacement au plafond (on enlève juste la gravité, Move() fera le reste)
+    //Dï¿½placement au plafond (on enlï¿½ve juste la gravitï¿½, Move() fera le reste)
     private void RoofMove()
     {
         if (_isRoof)
@@ -185,7 +190,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Avec ça on va gérer les états supplémentaires comme le sprint, l'accroupissement etc
+    //Avec ï¿½a on va gï¿½rer les ï¿½tats supplï¿½mentaires comme le sprint, l'accroupissement etc
     private void AdditionalState()
     {
         if (Input.GetKey("left shift"))
@@ -198,7 +203,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Déplacement gauche droite de base
+    //Dï¿½placement gauche droite de base
     private void Move()
     {
         if (!_MovementLock)
@@ -206,18 +211,18 @@ public class PlayerController : MonoBehaviour
             //Gestion du sprint
             if (_isRunning)
             {
-                //Déplacement Horizontal
+                //Dï¿½placement Horizontal
                 if (Input.GetKey("d"))
                 {
                     _isMoving = true;
-                    //Le 1 équivaut à la direction : Droite
+                    //Le 1 ï¿½quivaut ï¿½ la direction : Droite
                     _rigidBody.linearVelocityX = 1.5f * _speed;
 
                 }
                 else if (Input.GetKey("a"))
                 {
                     _isMoving = true;
-                    //Le -1 équivaut à la direction : Gauche
+                    //Le -1 ï¿½quivaut ï¿½ la direction : Gauche
                     _rigidBody.linearVelocityX = -1.5f * _speed;
                 }
                 else
@@ -229,18 +234,18 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //Déplacement Horizontal
+                //Dï¿½placement Horizontal
                 if (Input.GetKey("d"))
                 {
                     _isMoving = true;
-                    //Le 1 équivaut à la direction : Droite
+                    //Le 1 ï¿½quivaut ï¿½ la direction : Droite
                     _rigidBody.linearVelocityX = 1 * _speed;
 
                 }
                 else if (Input.GetKey("a"))
                 {
                     _isMoving = true;
-                    //Le -1 équivaut à la direction : Gauche
+                    //Le -1 ï¿½quivaut ï¿½ la direction : Gauche
                     _rigidBody.linearVelocityX = -1 * _speed;
                 }
                 else
@@ -253,7 +258,7 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
-    //Gestion de l'orientation du personnage en fonction de sa vélocité
+    //Gestion de l'orientation du personnage en fonction de sa vï¿½locitï¿½
     private void CharacterFacing()
     {
         if (_rigidBody.linearVelocityX < 0)
@@ -295,7 +300,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Cooldown du bloquage des contrôles suite au saut mural
+    //Cooldown du bloquage des contrï¿½les suite au saut mural
     IEnumerator MovementLockCooldown()
     {
         yield return new WaitForSeconds(0.5f);
@@ -313,21 +318,21 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         MovementLock = true;
-        print("Vous êtes mort");
-        FadeOutAnimator.Play("CanvasAnimation");
+        Debug.Log("Vous Ãªtes mort");
         StartCoroutine(RestartLevel());
     }
 
     IEnumerator RestartLevel()
     {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // On relance la scène actuelle soit le niveau dans lequel on joue
+        yield return _fadeManager.StartCoroutine(_fadeManager.FadeOut(1.5f));
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //Gestion des collisions
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //On vérifie si l'objet qu'on touche fait partie des murs du jeu
+        //On vï¿½rifie si l'objet qu'on touche fait partie des murs du jeu
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             //Si on touche le haut de l'objet c'est un sol
@@ -339,14 +344,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Door"))
         {
-            print("Vous avez trouvé la sortie (Condition de victoire pour l'instant)");
-            StartCoroutine(RestartLevel());
+            print("Vous avez trouvÃ© la sortie !");
+            ShowEndGameMenu();
         }
     }
+
+    private void ShowEndGameMenu()
+{
+    MovementLock = true;
+    _rigidBody.linearVelocity = Vector2.zero;
+    _animator.SetBool("isMoving", false);
+    
+    if (endGamePanel != null)
+    {
+        endGamePanel.SetActive(true);
+    }
+    else
+    {
+        Debug.LogWarning("Le menu de fin n'est pas assignÃ© dans l'inspecteur !");
+    }
+}
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -354,8 +387,9 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Shadow"))
         {
             _inShadow = true;
+            _animator.SetBool("inshadow", _inShadow);
         }
-        
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("ObservPoint") && gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             _inObservPoint = true;
@@ -385,7 +419,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //On reset tout les états de collisions
+    //On reset tout les ï¿½tats de collisions
     private void OnCollisionExit2D(Collision2D collision)
     {
         _isGrounded = false;
@@ -397,6 +431,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         _inShadow = false;
+        _animator.SetBool("inshadow", _inShadow);
         _inObservPoint = false;
     }
 
