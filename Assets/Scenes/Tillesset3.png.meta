@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b85fc87d5ea604469b1dc248a76a60f
+guid: d27fa7efab1977047acaf1db557d48fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3422186162126784612
-    second: brazeroEteint 1_0
+      213: 3983125184946863256
+    second: Tillesset3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: brazeroEteint 1_0
+      name: Tillesset3_0
       rect:
         serializedVersion: 2
-        x: 107
-        y: 0
-        width: 786
-        height: 573
+        x: 1000
+        y: 3000
+        width: 1000
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46803d4de2c0e7f20800000000000000
-      internalID: 3422186162126784612
+      spriteID: 89c7ba09047e64730800000000000000
+      internalID: 3983125184946863256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tillesset3_1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db058369a645484695d9fb62c7f490e
+      internalID: 600142285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tillesset3_3
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1000
+        width: 1000
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6da4ea2801d13d64ba0872241fe40593
+      internalID: -1096329400
       vertices: []
       indices: 
       edges: []
@@ -125,7 +169,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6c23f0008da01db4381c922955b54b9d
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +179,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      brazeroEteint 1_0: 3422186162126784612
+      Tillesset3_0: 3983125184946863256
+      Tillesset3_1: 600142285
+      Tillesset3_2: 1158879999
+      Tillesset3_3: -1096329400
+      Tillesset3_4: 1761229078
+      Tillesset3_5: 2077545583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

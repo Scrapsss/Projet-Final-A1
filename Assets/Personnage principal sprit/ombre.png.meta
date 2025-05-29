@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b85fc87d5ea604469b1dc248a76a60f
+guid: eb9bc6cc952394b4ebc1cdfa1ec14e8b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3422186162126784612
-    second: brazeroEteint 1_0
+      213: -7224217423611516676
+    second: ombre_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: brazeroEteint 1_0
+      name: ombre_0
       rect:
         serializedVersion: 2
-        x: 107
+        x: 0
         y: 0
-        width: 786
-        height: 573
+        width: 405
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46803d4de2c0e7f20800000000000000
-      internalID: 3422186162126784612
+      spriteID: cf8a27d578c6ebb90800000000000000
+      internalID: -7224217423611516676
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      brazeroEteint 1_0: 3422186162126784612
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
