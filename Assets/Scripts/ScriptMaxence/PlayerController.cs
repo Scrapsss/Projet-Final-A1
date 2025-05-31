@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private int _jumpCount;
     private Vector3 _scale;
     private FadeManager _fadeManager;
+    private bool _canWallWalk;
     
 
     //Les bool�ens pour les animations et les d�t�ctions de notre personnage
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour
         AdditionalState();
         Jump();
         RoofMove();
+        _canWallWalk = _inShadow && (_isWallLeft || _isWallRight || _isRoof);
     }
 
     private void FixedUpdate()
@@ -139,56 +141,77 @@ public class PlayerController : MonoBehaviour
         Move();
         WallMove();
         CharacterFacing();
+        OrientCharacterToSurface();
     }
+    
+
+    private void OrientCharacterToSurface()
+{
+    if (!_inShadow)
+    {
+        transform.rotation = Quaternion.identity;
+        return;
+    }
+
+    if (_isWallLeft)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, -90);
+    }
+    else if (_isWallRight)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 90);
+    }
+    else if (_isRoof)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 180);
+    }
+    else
+    {
+        transform.rotation = Quaternion.identity;
+    }
+}
+
 
     //Gestion des d�placement muraux
     private void WallMove()
     {
-        if (!_MovementLock)
-        {
-            if (_isWallLeft || _isWallRight)
-            {
-                _rigidBody.gravityScale = 0;
-                //On se d�place de haut en bas (Faut mettre les touches en qwerty pour que �a les captes bien
-                if (Input.GetKey("w"))
-                {
-                    _rigidBody.linearVelocityY = 1 * _speed;
-                }
-                else if (Input.GetKey("s"))
-                {
-                    _rigidBody.linearVelocityY = -1 * _speed;
-                }
-                else
-                {
-                    _rigidBody.linearVelocityY = 0;
-                }
-            }
-        }
-
-        //Reset de la gravit� quand on touche pas les murs ou le plafond
-        if (!_isWallLeft && !_isWallRight && !_isRoof)
-        {
-            _rigidBody.gravityScale = 6;
-        }
-    }
-
-    //D�placement au plafond (on enl�ve juste la gravit�, Move() fera le reste)
-    private void RoofMove()
-    {
-        if (_isRoof)
+        if (!_MovementLock && _canWallWalk)
         {
             _rigidBody.gravityScale = 0;
 
-            if (Input.GetKey("s"))
-            {
-                _rigidBody.gravityScale = 6;
-            }
+            float verticalInput = 0;
+            if (Input.GetKey("w"))
+                verticalInput = 1;
+            else if (Input.GetKey("s"))
+                verticalInput = -1;
+
+            _rigidBody.linearVelocity = new Vector2(_rigidBody.linearVelocityX, verticalInput * _speed);
         }
         else if (!_isRoof)
         {
             _rigidBody.gravityScale = 6;
         }
     }
+
+
+    //D�placement au plafond (on enl�ve juste la gravit�, Move() fera le reste)
+    private void RoofMove()
+{
+    if (_isRoof && _canWallWalk)
+    {
+        _rigidBody.gravityScale = 0;
+
+        if (Input.GetKey("s"))
+        {
+            _rigidBody.gravityScale = 6;
+        }
+    }
+    else if (!_isRoof)
+    {
+        _rigidBody.gravityScale = 6;
+    }
+}
+
 
     //Avec �a on va g�rer les �tats suppl�mentaires comme le sprint, l'accroupissement etc
     private void AdditionalState()

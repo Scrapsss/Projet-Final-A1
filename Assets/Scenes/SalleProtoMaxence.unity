@@ -505,6 +505,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 533136481}
     - target: {fileID: 2450495505431409119, guid: a813f4acba5d0e147ac696d64292cc35, type: 3}
+      propertyPath: wallCheckLeft
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450495505431409119, guid: a813f4acba5d0e147ac696d64292cc35, type: 3}
+      propertyPath: wallCheckRight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450495505431409119, guid: a813f4acba5d0e147ac696d64292cc35, type: 3}
       propertyPath: FadeOutAnimator
       value: 
       objectReference: {fileID: 1042264405}
@@ -1248,8 +1256,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.55}
-    oldSize: {x: 1.73, y: 9.76}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.05, y: 0.4}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1257,26 +1265,26 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.235, y: -0.049999997}
-      - {x: 0.695, y: 0.07}
-      - {x: 0.475, y: 0.14}
-      - {x: 0.295, y: 0.17}
+    - - {x: 0.4074682, y: 0.015909865}
+      - {x: 0.40206748, y: 0.04802973}
+      - {x: 0.40908965, y: 0.14}
+      - {x: 0.295, y: 0.16267721}
       - {x: 0.145, y: 0.19}
       - {x: 0.044999998, y: 0.19999999}
       - {x: -0.49499997, y: 0.19999999}
       - {x: -0.585, y: 0.19}
-      - {x: -0.695, y: 0.17}
-      - {x: -0.85499996, y: 0.12}
-      - {x: -1.105, y: 0}
-      - {x: -1.285, y: -0.11}
-      - {x: -1.8149999, y: -0.16}
-      - {x: -1.895, y: -0.17}
-      - {x: -1.915, y: -0.19}
-      - {x: -1.915, y: -0.19999999}
-      - {x: 1.9449999, y: -0.19999999}
-      - {x: 1.935, y: -0.17}
-      - {x: 1.765, y: -0.14999999}
-      - {x: 1.405, y: -0.12}
+      - {x: -0.593386, y: 0.1506447}
+      - {x: -0.6033806, y: 0.066774}
+      - {x: -0.60176516, y: -0.053226948}
+      - {x: -0.59788907, y: -0.10032259}
+      - {x: -0.6024202, y: -0.14521232}
+      - {x: -0.6000323, y: -0.16577475}
+      - {x: -0.5989084, y: -0.18154997}
+      - {x: -0.59891033, y: -0.19999999}
+      - {x: 0.41593957, y: -0.19999999}
+      - {x: 0.4190774, y: -0.16267626}
+      - {x: 0.41751158, y: -0.14999999}
+      - {x: 0.4090302, y: -0.061413884}
   m_UseDelaunayMesh: 0
 --- !u!1 &1749496884
 GameObject:
@@ -1590,16 +1598,24 @@ PrefabInstance:
       value: Shadow
       objectReference: {fileID: 0}
     - target: {fileID: 2937592404958142655, guid: 2e65c03bd56948a4fbf20de19656a1cd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 18.277
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937592404958142655, guid: 2e65c03bd56948a4fbf20de19656a1cd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15.203
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937592404958142655, guid: 2e65c03bd56948a4fbf20de19656a1cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.17
+      value: -0.64
       objectReference: {fileID: 0}
     - target: {fileID: 2937592404958142655, guid: 2e65c03bd56948a4fbf20de19656a1cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.98
+      value: -2.3786
       objectReference: {fileID: 0}
     - target: {fileID: 2937592404958142655, guid: 2e65c03bd56948a4fbf20de19656a1cd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: 2937592404958142655, guid: 2e65c03bd56948a4fbf20de19656a1cd, type: 3}
       propertyPath: m_LocalRotation.w
