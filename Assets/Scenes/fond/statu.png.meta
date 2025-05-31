@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eb9bc6cc952394b4ebc1cdfa1ec14e8b
+guid: 46e41fb436a573f4087f1a46f6cf1bf4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7224217423611516676
-    second: ombre_0
+      213: 3920795987443506961
+    second: statu_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ombre_0
+      name: statu_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 405
-        height: 40
+        width: 1350
+        height: 2172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf8a27d578c6ebb90800000000000000
-      internalID: -7224217423611516676
+      spriteID: 11fd8546d27796630800000000000000
+      internalID: 3920795987443506961
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ombre_0: -7224217423611516676
+      statu_0: 3920795987443506961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
