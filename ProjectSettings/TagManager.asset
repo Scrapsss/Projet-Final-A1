@@ -22,9 +22,9 @@ TagManager:
   - Enemy
   - Rock
   - Door
-  - 
-  - 
-  - 
+  - EnemyVision
+  - EnemyExecution
+  - Light
   - 
   - 
   - 

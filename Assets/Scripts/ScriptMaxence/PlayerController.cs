@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
     public Collision2D _collision;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator FadeOutAnimator;
 
     public float _speed;
     public float _jumpForce;
     public int _maxJumpCount;
     private int _jumpCount;
     private Vector3 _scale;
+    [SerializeField] private float _crouchScale;
     
 
     //Les booléens pour les animations et les détéctions de notre personnage
@@ -72,6 +74,12 @@ public class PlayerController : MonoBehaviour
         get { return _isRunning; }
         set { _isRunning = value; }
     }
+    private bool _isCrouch;
+    public bool IsCrouch
+    {
+        get { return _isCrouch; }
+        set { _isCrouch = value; }
+    }
     private bool _MovementLock;
     public bool MovementLock
     {
@@ -80,7 +88,7 @@ public class PlayerController : MonoBehaviour
         set
         { _MovementLock = value; }
     }
-    private bool _inShadow;
+    private bool _inShadow = true;
     public bool InShadow
     {
         get
@@ -125,6 +133,7 @@ public class PlayerController : MonoBehaviour
         AnimationCheck();
         AdditionalState();
         Jump();
+        Crouch();
         RoofMove();
     }
 
@@ -187,13 +196,36 @@ public class PlayerController : MonoBehaviour
     //Avec ça on va gérer les états supplémentaires comme le sprint, l'accroupissement etc
     private void AdditionalState()
     {
-        if (Input.GetKey("left shift"))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             _isRunning = true;
         }
         else
         {
             _isRunning = false;
+        }
+
+        
+
+    }
+
+    private void Crouch()
+    {
+        if (Input.GetKey(KeyCode.C))
+        {
+            _isCrouch = true;
+            if (Input.GetKeyDown(KeyCode.C))
+                transform.position -= new Vector3(0, 4, 0);
+        }
+        else
+            _isCrouch = false;
+
+        if (IsCrouch) 
+            transform.localScale = new Vector3(transform.localScale.x, _crouchScale, transform.localScale.z);
+        else if (Input.GetKeyUp(KeyCode.C))
+        {
+            transform.localScale = _scale;
+            transform.position -= new Vector3(0, -4, 0);
         }
     }
 
@@ -257,37 +289,38 @@ public class PlayerController : MonoBehaviour
     {
         if (_rigidBody.linearVelocityX < 0)
         {
-            _scale.x = -1;
-            transform.localScale = _scale;
+            transform.localScale = new Vector3( -1, transform.localScale.y, transform.localScale.z);
         }
         else if (_rigidBody.linearVelocityX > 0)
         {
-            _scale.x = 1;
-            transform.localScale = _scale;
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
     }
 
     //Gestion du saut et des sauts muraux
     private void Jump()
     {
-        if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallLeft)
+        if (!MovementLock)
         {
-            _rigidBody.linearVelocityY = _jumpForce;
-            _rigidBody.linearVelocityX = 1 * _speed;
-            _MovementLock = true;
-            StartCoroutine(MovementLockCooldown());
-        }
-        else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallRight)
-        {
-            _rigidBody.linearVelocityY = _jumpForce;
-            _rigidBody.linearVelocityX = -1 * _speed;
-            _MovementLock = true;
-            StartCoroutine(MovementLockCooldown());
-        }
-        else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount)
-        {
-            _rigidBody.linearVelocityY = _jumpForce;
-            _jumpCount++;
+            if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallLeft)
+            {
+                _rigidBody.linearVelocityY = _jumpForce;
+                _rigidBody.linearVelocityX = 1 * _speed;
+                _MovementLock = true;
+                StartCoroutine(MovementLockCooldown());
+            }
+            else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount && _isWallRight)
+            {
+                _rigidBody.linearVelocityY = _jumpForce;
+                _rigidBody.linearVelocityX = -1 * _speed;
+                _MovementLock = true;
+                StartCoroutine(MovementLockCooldown());
+            }
+            else if (Input.GetKeyDown("space") && _jumpCount < _maxJumpCount)
+            {
+                _rigidBody.linearVelocityY = _jumpForce;
+                _jumpCount++;
+            }
         }
     }
 
@@ -310,6 +343,7 @@ public class PlayerController : MonoBehaviour
     {
         MovementLock = true;
         print("Vous êtes mort");
+        FadeOutAnimator.Play("CanvasAnimation");
         StartCoroutine(RestartLevel());
     }
 
@@ -339,6 +373,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Door"))
         {
             print("Vous avez trouvé la sortie (Condition de victoire pour l'instant)");
+            MovementLock = true;
             StartCoroutine(RestartLevel());
         }
     }
@@ -346,9 +381,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Si on entre dans une ombre
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Shadow"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
-            _inShadow = true;
+            _inShadow = false;
         }
         
         if (collision.gameObject.layer == LayerMask.NameToLayer("ObservPoint") && gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -391,7 +426,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _inShadow = false;
+        _inShadow = true;
         _inObservPoint = false;
     }
 

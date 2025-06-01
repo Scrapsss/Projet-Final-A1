@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      brazeroEteint 1_0: 3422186162126784612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -20,7 +20,9 @@ public class EnemyController : MonoBehaviour
     private CapsuleCollider2D _collider;
     private Animator _animator;
 
-    private float direction = 1;
+    [SerializeField] private GameObject _executionCollider;
+
+    private float direction;
 
     //Les limites de patrouilles
     public float LimitePatrouilleDroite;
@@ -61,7 +63,7 @@ public class EnemyController : MonoBehaviour
     }
 
     //InShadow pourrait être utile à un moment donc je le garde
-    private bool _inShadow;
+    private bool _inShadow = true;
     public bool InShadow
     {
         get
@@ -81,8 +83,13 @@ public class EnemyController : MonoBehaviour
         set { _isExecutable = value; }
     }
 
+    private enum StartPatrolSide
+    {
+        Left,
+        Right
+    }
 
-    
+    [SerializeField] private StartPatrolSide _StartPatrolSide;
 
     public enum STATE
     {
@@ -101,6 +108,13 @@ public class EnemyController : MonoBehaviour
 
     private float _countdown;
     private float _SoundCountdown;
+
+    [SerializeField] private Transform _VisualStateGO;
+    [SerializeField] private GameObject QuestionState;
+    [SerializeField] private GameObject SeenState;
+    [SerializeField] private GameObject ChaseState;
+
+    [HideInInspector] public bool ChaseCoroutineDone;
 
     private void Awake()
     {
@@ -121,6 +135,11 @@ public class EnemyController : MonoBehaviour
 
         LimiteDroite = new Vector3(transform.position.x + LimitePatrouilleDroite, transform.position.y, transform.position.z);
         LimiteGauche = new Vector3(transform.position.x - LimitePatrouilleGauche, transform.position.y, transform.position.z);
+
+        if (_StartPatrolSide == StartPatrolSide.Left)
+            direction = -1;
+        else 
+            direction = 1;
     }
 
     private void Init()
@@ -136,6 +155,15 @@ public class EnemyController : MonoBehaviour
         CharacterFacing();
         AnimationCheck();
         ExecuteIcon();
+        IsInShadow();
+    }
+
+    private void IsInShadow()
+    {
+        if (InShadow)
+            _executionCollider.SetActive(true);
+        else if (!InShadow)
+            _executionCollider.SetActive(false);
     }
 
     private void ExecuteIcon()
@@ -144,6 +172,28 @@ public class EnemyController : MonoBehaviour
             _executionIcon.SetActive(true);
         else
             _executionIcon.SetActive(false);
+    }
+
+    private void ChangePatrolVisual(int index)
+    {
+        QuestionState.SetActive(false);
+        SeenState.SetActive(false);
+        ChaseState.SetActive(false);
+
+        switch(index)
+        {
+            case 1:
+                QuestionState.SetActive(true);
+                break;
+            case 2: 
+                SeenState.SetActive(true);
+                break;
+            case 3:
+                ChaseState.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     //Gestion de l'état de l'ennemi
@@ -162,6 +212,9 @@ public class EnemyController : MonoBehaviour
 
                 break;
             case STATE.IDLE:
+                ChangePatrolVisual(0); // On active rien du tout pour simplement tout désactiver
+                ChaseCoroutineDone = false; // On reste la coroutine de chasse
+
                 if (_countdown > data.durationIDLE)
                 {
                     _state = STATE.MOVE;
@@ -197,11 +250,16 @@ public class EnemyController : MonoBehaviour
                 break;
             case STATE.CHASE:
                 IsMoving = true;
+                if (!ChaseCoroutineDone)
+                    StartCoroutine(PlayerDetected()); // Activer le visuel correspondant
+                ChaseCoroutineDone = true; // Il la lancera qu'une seule fois
 
                 Vector2 ChaseDirection = ((Vector2)Target.position - (Vector2)transform.position).normalized;
                 _rigidBody.linearVelocityX = ChaseDirection.x * data.stats.speed;
                 break;
             case STATE.SOUNDHEARD:
+                ChangePatrolVisual(1);
+
                 if (_SoundCountdown > data.durationSOUNDHEARD)
                 {
                     _state = STATE.SOUNDCHECK;
@@ -236,6 +294,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayerDetected()
+    {
+        ChangePatrolVisual(2);
+        yield return new WaitForSeconds(1);
+        ChangePatrolVisual(3);
+    }
+
     //Les mêmes code que le personnages puisque ce sont des contrôles de bases
     private void CharacterFacing()
     {
@@ -243,11 +308,13 @@ public class EnemyController : MonoBehaviour
         {
             _scale.x = -1;
             transform.localScale = _scale;
+            _VisualStateGO.localScale = _scale; // On inverse le scale du canvas aussi pour le garder dans le même sens constamment
         }
         else if (_rigidBody.linearVelocityX > 0)
         {
             _scale.x = 1;
             transform.localScale = _scale;
+            _VisualStateGO.localScale = _scale;
         }
     }
 
@@ -262,6 +329,20 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _state = STATE.IDLE;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //Si on entre dans une ombre
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
+        {
+            _inShadow = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _inShadow = true;
     }
 
     //Gestion des collisions

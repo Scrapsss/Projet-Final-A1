@@ -1,4 +1,3 @@
-using TMPro.Examples;
 using Unity.Cinemachine;
 using UnityEngine;
 
