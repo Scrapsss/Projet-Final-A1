@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6591907915727462561}
   - component: {fileID: 6354258904948936718}
   - component: {fileID: 4399154632504083139}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: DeactivateCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -2.9495242}
+  m_Offset: {x: 0, y: 2.561727}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.152466, y: 5.683491}
+  m_Size: {x: 10.152466, y: 16.70599}
   m_EdgeRadius: 0
 --- !u!114 &4399154632504083139
 MonoBehaviour:
@@ -153,13 +153,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8076709496769059780}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7541888197649628053}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5138243229892814952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,9 +175,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.05
+  m_FalloffIntensity: 0.25
   m_Color: {r: 1, g: 0.56816864, b: 0.2245282, a: 0.70980394}
-  m_Intensity: 5
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000

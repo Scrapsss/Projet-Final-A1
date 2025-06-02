@@ -333,7 +333,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //Si on entre dans une ombre
         if (collision.gameObject.layer == LayerMask.NameToLayer("Light"))
         {
             _inShadow = false;

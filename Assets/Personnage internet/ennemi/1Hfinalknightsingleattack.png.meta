@@ -1,0 +1,742 @@
+fileFormatVersion: 2
+guid: 9e68b53d745591f4d9f60f3267c4a676
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8868981733876660896
+    second: 1Hfinalknightsingleattack_0
+  - first:
+      213: -5052911956316171774
+    second: 1Hfinalknightsingleattack_1
+  - first:
+      213: 3530810690084736323
+    second: 1Hfinalknightsingleattack_2
+  - first:
+      213: -8622170391178456942
+    second: 1Hfinalknightsingleattack_3
+  - first:
+      213: 447996664072003996
+    second: 1Hfinalknightsingleattack_4
+  - first:
+      213: -795942196131258961
+    second: 1Hfinalknightsingleattack_5
+  - first:
+      213: -507401780061112239
+    second: 1Hfinalknightsingleattack_6
+  - first:
+      213: -4295887473998398222
+    second: 1Hfinalknightsingleattack_7
+  - first:
+      213: -7131297078583871333
+    second: 1Hfinalknightsingleattack_8
+  - first:
+      213: -8976182041999970208
+    second: 1Hfinalknightsingleattack_9
+  - first:
+      213: 1527729744556705730
+    second: 1Hfinalknightsingleattack_10
+  - first:
+      213: 2110655942014064048
+    second: 1Hfinalknightsingleattack_11
+  - first:
+      213: -6613533362391170294
+    second: 1Hfinalknightsingleattack_12
+  - first:
+      213: -6910427371764217811
+    second: 1Hfinalknightsingleattack_13
+  - first:
+      213: 2931731431535546532
+    second: 1Hfinalknightsingleattack_14
+  - first:
+      213: -1811171885076802412
+    second: 1Hfinalknightsingleattack_15
+  - first:
+      213: 2530291294200266136
+    second: 1Hfinalknightsingleattack_16
+  - first:
+      213: -2639394949114251232
+    second: 1Hfinalknightsingleattack_17
+  - first:
+      213: 8941751041365167243
+    second: 1Hfinalknightsingleattack_18
+  - first:
+      213: 3110720259952368006
+    second: 1Hfinalknightsingleattack_19
+  - first:
+      213: -8142018682686690927
+    second: 1Hfinalknightsingleattack_20
+  - first:
+      213: -8560210273587312775
+    second: 1Hfinalknightsingleattack_21
+  - first:
+      213: -289979134564295623
+    second: 1Hfinalknightsingleattack_22
+  - first:
+      213: -8082650617037194188
+    second: 1Hfinalknightsingleattack_23
+  - first:
+      213: 5964171862734083675
+    second: 1Hfinalknightsingleattack_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_0
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 75
+        width: 136
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0658ad85a1c0be480800000000000000
+      internalID: -8868981733876660896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_1
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 73
+        width: 236
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2025372e85370e9b0800000000000000
+      internalID: -5052911956316171774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_2
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 73
+        width: 242
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d07a79d95fff030800000000000000
+      internalID: 3530810690084736323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_3
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 73
+        width: 172
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290dae026b5e75880800000000000000
+      internalID: -8622170391178456942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_4
+      rect:
+        serializedVersion: 2
+        x: 2195
+        y: 73
+        width: 178
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c916296a79a973600800000000000000
+      internalID: 447996664072003996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_5
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 73
+        width: 234
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad1ad92ace34f4f0800000000000000
+      internalID: -795942196131258961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_6
+      rect:
+        serializedVersion: 2
+        x: 3163
+        y: 73
+        width: 274
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1587e05f4c855f8f0800000000000000
+      internalID: -507401780061112239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_7
+      rect:
+        serializedVersion: 2
+        x: 3679
+        y: 73
+        width: 236
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc764d5a11f164c0800000000000000
+      internalID: -4295887473998398222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_8
+      rect:
+        serializedVersion: 2
+        x: 4191
+        y: 73
+        width: 236
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b983a3b171b880d90800000000000000
+      internalID: -7131297078583871333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_9
+      rect:
+        serializedVersion: 2
+        x: 4705
+        y: 73
+        width: 234
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 060f95b9df13e6380800000000000000
+      internalID: -8976182041999970208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_10
+      rect:
+        serializedVersion: 2
+        x: 5215
+        y: 73
+        width: 236
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c7c911cb16933510800000000000000
+      internalID: 1527729744556705730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_11
+      rect:
+        serializedVersion: 2
+        x: 5839
+        y: 73
+        width: 226
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b5d0d2856e8a4d10800000000000000
+      internalID: 2110655942014064048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_12
+      rect:
+        serializedVersion: 2
+        x: 5859
+        y: 203
+        width: 196
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a03ca7862720834a0800000000000000
+      internalID: -6613533362391170294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_13
+      rect:
+        serializedVersion: 2
+        x: 6347
+        y: 73
+        width: 222
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d288bdb1bea3910a0800000000000000
+      internalID: -6910427371764217811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_14
+      rect:
+        serializedVersion: 2
+        x: 6555
+        y: 77
+        width: 70
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a01689343a9fa820800000000000000
+      internalID: 2931731431535546532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_15
+      rect:
+        serializedVersion: 2
+        x: 6863
+        y: 73
+        width: 224
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49492da34cc6dd6e0800000000000000
+      internalID: -1811171885076802412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_16
+      rect:
+        serializedVersion: 2
+        x: 7375
+        y: 73
+        width: 224
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89df119a6866d1320800000000000000
+      internalID: 2530291294200266136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_17
+      rect:
+        serializedVersion: 2
+        x: 1881
+        y: 147
+        width: 118
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028b514274cfe5bd0800000000000000
+      internalID: -2639394949114251232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_18
+      rect:
+        serializedVersion: 2
+        x: 2893
+        y: 125
+        width: 150
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ccc8a523b771c70800000000000000
+      internalID: 8941751041365167243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_19
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 113
+        width: 98
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689521a589f7b2b20800000000000000
+      internalID: 3110720259952368006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_20
+      rect:
+        serializedVersion: 2
+        x: 2001
+        y: 133
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 199add7752db10f80800000000000000
+      internalID: -8142018682686690927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_21
+      rect:
+        serializedVersion: 2
+        x: 7151
+        y: 91
+        width: 14
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977cd203c16043980800000000000000
+      internalID: -8560210273587312775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_22
+      rect:
+        serializedVersion: 2
+        x: 2903
+        y: 113
+        width: 58
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93c15047389c9fbf0800000000000000
+      internalID: -289979134564295623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_23
+      rect:
+        serializedVersion: 2
+        x: 2967
+        y: 119
+        width: 28
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43cf7e76618a4df80800000000000000
+      internalID: -8082650617037194188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1Hfinalknightsingleattack_24
+      rect:
+        serializedVersion: 2
+        x: 7137
+        y: 77
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5615a9a5bef4c250800000000000000
+      internalID: 5964171862734083675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
