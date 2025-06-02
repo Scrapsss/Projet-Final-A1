@@ -80,12 +80,12 @@ public class PlayerPower : MonoBehaviour
         if (playerController.InShadow)
         {
             //C'est la touche E
-            if (Input.GetButtonDown("Fire2") && !ShadowTP_Stance && playerController.IsGrounded)
+            if (Input.GetKeyDown(KeyCode.Q) && !ShadowTP_Stance && playerController.IsGrounded)
             {
                 ShadowTP_Stance = true;
 
             }
-            else if (Input.GetButtonDown("Fire2") && ShadowTP_Stance)
+            else if (Input.GetKeyDown(KeyCode.Q) && ShadowTP_Stance)
             {
                 ShadowTP_Stance = false;
             }
@@ -202,6 +202,14 @@ public class PlayerPower : MonoBehaviour
         if (Input.GetKey("e"))
         {
             ExecuteEnemy(enemy);
+        }
+    }
+
+    public void CanDeactivateLightSource(DeactivateLightSource LightScript)
+    {
+        if (Input.GetKey("e"))
+        {
+            LightScript.Deactivate = true;
         }
     }
 
