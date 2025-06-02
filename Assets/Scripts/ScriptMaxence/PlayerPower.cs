@@ -192,7 +192,7 @@ public class PlayerPower : MonoBehaviour
 
     IEnumerator ExecuteWaiting(GameObject enemy)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         Destroy(enemy);
         playerController.MovementLock = false;
     }

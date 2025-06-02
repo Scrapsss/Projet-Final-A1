@@ -30,9 +30,9 @@ public class TutorialAnimation : MonoBehaviour
     private float LineAnimTime = 0;
     private float DescAnimTime = 0;
 
-    public bool Animate = false;
-    private bool isActive = false; // Pour savoir si la panneau est affiché ou non (On s'en servira pour le fadeOut)
     private bool FadeOutDone = false;
+    public bool Activate = false;
+    public bool DeActivate = false;
 
     //Ici je fais des marqueurs pour savoir quand déclencher les animations
     private bool PanelDone = false;
@@ -58,9 +58,10 @@ public class TutorialAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Animate && !isActive)
+
+        if (Activate)
             FadeInAnimation();
-        else if (Animate && isActive)
+        else if (DeActivate)
             FadeOutAnimation();
 
     }
@@ -127,8 +128,7 @@ public class TutorialAnimation : MonoBehaviour
             {
                 DescAnimTime = 0;
                 DescDone = true;
-                isActive = true;
-                Animate = false;
+                Activate = false;
             }
         }
     }
@@ -160,14 +160,13 @@ public class TutorialAnimation : MonoBehaviour
             if (PanelAnimTime > PanelDuration)
             {
                 PanelAnimTime = 0;
-                Animate = false;
-                isActive = false;
+                DeActivate = false;
                 ResetState();
             }
         }
     }
 
-    private void ResetState()
+    public void ResetState()
     {
         TMP_Title.color = TMP_TitleNaturalColor;
         TMP_Desc.color = TMP_DescNaturalColor;
@@ -186,5 +185,5 @@ public class TutorialAnimation : MonoBehaviour
         TitleAnimTime = 0;
         LineAnimTime = 0;
         DescAnimTime = 0;
-}
+    }
 }

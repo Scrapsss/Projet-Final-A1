@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8515265862118902778}
   - component: {fileID: 2450495505431409119}
   - component: {fileID: 1273424017610782712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,4 +217,4 @@ MonoBehaviour:
   RockPrefab: {fileID: 2780452892531774847, guid: c9a6dfe4c85d201489220fc3df73e4be, type: 3}
   LancerMax: 50
   ForceDistance: 20
-  animDuration: 0
+  animDuration: 0.5
