@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: e7994e15ba0831e46b6c9304ed5567e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7400186074065577588
+    second: Ennemi_idle_0
+  - first:
+      213: -6289396192031295544
+    second: Ennemi_idle_1
+  - first:
+      213: 6691751646122246012
+    second: Ennemi_idle_2
+  - first:
+      213: 6990970885611942937
+    second: Ennemi_idle_3
+  - first:
+      213: 2404025970045445660
+    second: Ennemi_idle_4
+  - first:
+      213: 4702175947194130561
+    second: Ennemi_idle_5
+  - first:
+      213: 2909415714006506274
+    second: Ennemi_idle_6
+  - first:
+      213: -7605643391314692364
+    second: Ennemi_idle_7
+  - first:
+      213: -4842953662234372399
+    second: Ennemi_idle_8
+  - first:
+      213: -583198264910054698
+    second: Ennemi_idle_9
+  - first:
+      213: 7355975190553633767
+    second: Ennemi_idle_10
+  - first:
+      213: -8196102393466255178
+    second: Ennemi_idle_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ennemi_idle_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1070
+        width: 173
+        height: 976
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4734a7bca4ef57749a3972cee98f737d
+      internalID: 729495149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_1
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1070
+        width: 174
+        height: 976
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef84de19731a8e849a9335af0b03df66
+      internalID: -156282732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_2
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1070
+        width: 174
+        height: 978
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d074cc62c8ea94798ee244a57deefe
+      internalID: 2108430538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_3
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1070
+        width: 173
+        height: 978
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ec84b54dd7bee42aa934a5d35dc21a
+      internalID: -1312043741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_4
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 1067
+        width: 174
+        height: 981
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eed06cb78f315c94a90b0ec2a8ad963b
+      internalID: -245043818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_5
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 1066
+        width: 174
+        height: 982
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6804570cb33e94a46b19ae0ebbb4b9a0
+      internalID: -1418111072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_6
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1064
+        width: 174
+        height: 983
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e67047c591b09947be84de7ef2799f8
+      internalID: 1825217736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_7
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 1064
+        width: 173
+        height: 983
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f982e1cf44ff01f4e993474434d7a797
+      internalID: 1460797362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_8
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 1066
+        width: 173
+        height: 981
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cda13be8af856f4d99634254ba32761
+      internalID: 781504355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 54
+        width: 173
+        height: 980
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3da59602cb181142bb71cd1b12ccc7f
+      internalID: -1596716328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_10
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 55
+        width: 174
+        height: 980
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a00214d1de34f041b64c3ca7fb851f5
+      internalID: -1211693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ennemi_idle_11
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 55
+        width: 173
+        height: 979
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a535a8614877bd4e90ac045446405fe
+      internalID: 935474872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 99e9ec5107f2ae942a506de53c53164e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ennemi_idle_0: 729495149
+      Ennemi_idle_1: -156282732
+      Ennemi_idle_10: -1211693
+      Ennemi_idle_11: 935474872
+      Ennemi_idle_2: 2108430538
+      Ennemi_idle_3: -1312043741
+      Ennemi_idle_4: -245043818
+      Ennemi_idle_5: -1418111072
+      Ennemi_idle_6: 1825217736
+      Ennemi_idle_7: 1460797362
+      Ennemi_idle_8: 781504355
+      Ennemi_idle_9: -1596716328
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

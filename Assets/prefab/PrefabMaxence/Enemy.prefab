@@ -714,7 +714,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 2503005686992494560, guid: 39ef1096b5180284ba1538360ac826a2, type: 3}
+  m_Sprite: {fileID: 729495149, guid: e7994e15ba0831e46b6c9304ed5567e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -830,7 +830,7 @@ MonoBehaviour:
   _executionIcon: {fileID: 1268234123752567927}
   Target: {fileID: 0}
   SoundTarget: {x: 0, y: 0, z: 0}
-  _StartPatrolSide: 0
+  _StartPatrolSide: 1
   _state: 1
   _VisualStateGO: {fileID: 4895251441952903881}
   QuestionState: {fileID: 4778808440927174444}
