@@ -74,7 +74,7 @@ public class TutorialAnimation : MonoBehaviour
 
             PanelColor.color = Color.Lerp(PanelNaturalColor, PanelEndColor, PanelRatio);
 
-            PanelAnimTime += Time.unscaledDeltaTime;
+            PanelAnimTime += Time.deltaTime;
             if (PanelAnimTime > PanelDuration)
             {
                 PanelAnimTime = 0;
@@ -89,7 +89,7 @@ public class TutorialAnimation : MonoBehaviour
 
             TMP_Title.color = Color.Lerp(TMP_TitleNaturalColor, TMP_TitleEndColor, TitleRatio);
 
-            TitleAnimTime += Time.unscaledDeltaTime;
+            TitleAnimTime += Time.deltaTime;
             if (TitleAnimTime > TitleDuration)
             {
                 TitleAnimTime = 0;
@@ -106,7 +106,7 @@ public class TutorialAnimation : MonoBehaviour
 
             SeparationLine.fillAmount = LineRatio;
 
-            LineAnimTime += Time.unscaledDeltaTime;
+            LineAnimTime += Time.deltaTime;
             if (LineAnimTime > LineDuration)
             {
                 LineAnimTime = 0;
@@ -123,7 +123,7 @@ public class TutorialAnimation : MonoBehaviour
 
             TMP_Desc.color = Color.Lerp(TMP_DescNaturalColor, TMP_DescEndColor, DescRatio);
 
-            DescAnimTime += Time.unscaledDeltaTime;
+            DescAnimTime += Time.deltaTime;
             if (DescAnimTime > DescDuration)
             {
                 DescAnimTime = 0;
@@ -143,7 +143,7 @@ public class TutorialAnimation : MonoBehaviour
             SeparationLine.fillAmount = 1 - DescRatio; // Compteur inversé :3
             TMP_Desc.color = Color.Lerp(TMP_DescEndColor, TMP_DescNaturalColor, DescRatio);
 
-            DescAnimTime += Time.unscaledDeltaTime;
+            DescAnimTime += Time.deltaTime;
             if (DescAnimTime > DescDuration)
             {
                 DescAnimTime = 0;
@@ -156,7 +156,7 @@ public class TutorialAnimation : MonoBehaviour
 
             PanelColor.color = Color.Lerp(PanelEndColor, PanelNaturalColor, PanelRatio);
 
-            PanelAnimTime += Time.unscaledDeltaTime;
+            PanelAnimTime += Time.deltaTime;
             if (PanelAnimTime > PanelDuration)
             {
                 PanelAnimTime = 0;
