@@ -1,31 +1,22 @@
 fileFormatVersion: 2
-guid: fca212a72e00a1f4fbe07986c5a9e34a
+guid: baca291e89547c340a16824c93774008
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1315096015805180193
-    second: pp-marche_0
+      213: -5244631401821638970
+    second: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_0
   - first:
-      213: 3196649348534091402
-    second: pp-marche_1
+      213: -7100066196723703475
+    second: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_1
   - first:
-      213: 3217895094501101661
-    second: pp-marche_2
+      213: 4447554412790818337
+    second: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_2
   - first:
-      213: -6973652986494778643
-    second: pp-marche_3
+      213: 8537983402021747705
+    second: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_3
   - first:
-      213: -327343156508568614
-    second: pp-marche_4
-  - first:
-      213: 7041709260218471857
-    second: pp-marche_5
-  - first:
-      213: -2624929046340365158
-    second: pp-marche_6
-  - first:
-      213: -7549504694315219352
-    second: pp-marche_7
+      213: -2513188863420421055
+    second: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,177 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pp-marche_0
+      name: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1096
-        width: 588
-        height: 951
-      alignment: 9
-      pivot: {x: 0.52045983, y: 0.54680365}
+        x: 0
+        y: 0
+        width: 60
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1296993dbd8204210800000000000000
-      internalID: 1315096015805180193
+      spriteID: 6ceef8cf6835737b0800000000000000
+      internalID: -5244631401821638970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_1
+      name: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_1
       rect:
         serializedVersion: 2
-        x: 597
-        y: 1117
-        width: 620
-        height: 928
-      alignment: 9
-      pivot: {x: 0.54665387, y: 0.5394749}
+        x: 61
+        y: 5
+        width: 60
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8ebbda55a7cc5c20800000000000000
-      internalID: 3196649348534091402
+      spriteID: d41668e696f777d90800000000000000
+      internalID: -7100066196723703475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_2
+      name: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_2
       rect:
         serializedVersion: 2
-        x: 1220
-        y: 1070
-        width: 358
-        height: 978
-      alignment: 9
-      pivot: {x: 0.8012907, y: 0.55865204}
+        x: 127
+        y: 5
+        width: 76
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d50d5301a8248ac20800000000000000
-      internalID: 3217895094501101661
+      spriteID: 1262e9d9c23e8bd30800000000000000
+      internalID: 4447554412790818337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_3
+      name: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_3
       rect:
         serializedVersion: 2
-        x: 1585
-        y: 1063
-        width: 364
-        height: 985
-      alignment: 9
-      pivot: {x: 0.53333056, y: 0.56794965}
+        x: 207
+        y: 5
+        width: 52
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de203298e8b983f90800000000000000
-      internalID: -6973652986494778643
+      spriteID: 9fbffaffaa20d7670800000000000000
+      internalID: 8537983402021747705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_4
+      name: Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_4
       rect:
         serializedVersion: 2
-        x: 5
-        y: 106
-        width: 489
-        height: 948
-      alignment: 9
-      pivot: {x: 0.55621016, y: 0.5416185}
+        x: 264
+        y: 5
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad3d6ac222b057bf0800000000000000
-      internalID: -327343156508568614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pp-marche_5
-      rect:
-        serializedVersion: 2
-        x: 501
-        y: 124
-        width: 542
-        height: 930
-      alignment: 9
-      pivot: {x: 0.57204944, y: 0.5344872}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1b596ea734d29b160800000000000000
-      internalID: 7041709260218471857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pp-marche_6
-      rect:
-        serializedVersion: 2
-        x: 1045
-        y: 81
-        width: 323
-        height: 973
-      alignment: 9
-      pivot: {x: 0.76929164, y: 0.55663425}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a94174890f0629bd0800000000000000
-      internalID: -2624929046340365158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pp-marche_7
-      rect:
-        serializedVersion: 2
-        x: 1391
-        y: 57
-        width: 375
-        height: 999
-      alignment: 9
-      pivot: {x: 0.5858203, y: 0.5642084}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8668231ca75ca3790800000000000000
-      internalID: -7549504694315219352
+      spriteID: 14cab5e4b0c5f1dd0800000000000000
+      internalID: -2513188863420421055
       vertices: []
       indices: 
       edges: []
@@ -300,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a5b8c55472a8e5e459ce3fad9321639d
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pp-marche_0: 1315096015805180193
-      pp-marche_1: 3196649348534091402
-      pp-marche_2: 3217895094501101661
-      pp-marche_3: -6973652986494778643
-      pp-marche_4: -327343156508568614
-      pp-marche_5: 7041709260218471857
-      pp-marche_6: -2624929046340365158
-      pp-marche_7: -7549504694315219352
+      Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_0: -5244631401821638970
+      Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_1: -7100066196723703475
+      Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_2: 4447554412790818337
+      Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_3: 8537983402021747705
+      Jouersum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_ei_4: -2513188863420421055
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

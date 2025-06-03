@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: fca212a72e00a1f4fbe07986c5a9e34a
+guid: 96e765683ebcd0541bb263b04faea47e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1315096015805180193
-    second: pp-marche_0
+      213: 6012208166218866068
+    second: Quitter__0
   - first:
-      213: 3196649348534091402
-    second: pp-marche_1
+      213: 8812637215998797890
+    second: Quitter__1
   - first:
-      213: 3217895094501101661
-    second: pp-marche_2
+      213: -6334259992486896082
+    second: Quitter__2
   - first:
-      213: -6973652986494778643
-    second: pp-marche_3
+      213: -1771526273448656084
+    second: Quitter__3
   - first:
-      213: -327343156508568614
-    second: pp-marche_4
+      213: -2182747340399664476
+    second: Quitter__4
   - first:
-      213: 7041709260218471857
-    second: pp-marche_5
+      213: 9072005298041401264
+    second: Quitter__5
   - first:
-      213: -2624929046340365158
-    second: pp-marche_6
+      213: 2287015869115916778
+    second: Quitter__6
   - first:
-      213: -7549504694315219352
-    second: pp-marche_7
+      213: -5548788395380151530
+    second: Quitter__7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,177 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pp-marche_0
+      name: Quitter__0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1096
-        width: 588
-        height: 951
-      alignment: 9
-      pivot: {x: 0.52045983, y: 0.54680365}
+        x: 0
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1296993dbd8204210800000000000000
-      internalID: 1315096015805180193
+      spriteID: 49d9d2f1977af6350800000000000000
+      internalID: 6012208166218866068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_1
+      name: Quitter__1
       rect:
         serializedVersion: 2
-        x: 597
-        y: 1117
-        width: 620
-        height: 928
-      alignment: 9
-      pivot: {x: 0.54665387, y: 0.5394749}
+        x: 163
+        y: 65
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8ebbda55a7cc5c20800000000000000
-      internalID: 3196649348534091402
+      spriteID: 248eef94bd6cc4a70800000000000000
+      internalID: 8812637215998797890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_2
+      name: Quitter__2
       rect:
         serializedVersion: 2
-        x: 1220
-        y: 1070
-        width: 358
-        height: 978
-      alignment: 9
-      pivot: {x: 0.8012907, y: 0.55865204}
+        x: 185
+        y: 15
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d50d5301a8248ac20800000000000000
-      internalID: 3217895094501101661
+      spriteID: e2e99d0e8103818a0800000000000000
+      internalID: -6334259992486896082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_3
+      name: Quitter__3
       rect:
         serializedVersion: 2
-        x: 1585
-        y: 1063
-        width: 364
-        height: 985
-      alignment: 9
-      pivot: {x: 0.53333056, y: 0.56794965}
+        x: 220
+        y: 15
+        width: 31
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de203298e8b983f90800000000000000
-      internalID: -6973652986494778643
+      spriteID: c2342d08d364a67e0800000000000000
+      internalID: -1771526273448656084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_4
+      name: Quitter__4
       rect:
         serializedVersion: 2
-        x: 5
-        y: 106
-        width: 489
-        height: 948
-      alignment: 9
-      pivot: {x: 0.55621016, y: 0.5416185}
+        x: 90
+        y: 15
+        width: 58
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad3d6ac222b057bf0800000000000000
-      internalID: -327343156508568614
+      spriteID: 4a2ac0dcbd255b1e0800000000000000
+      internalID: -2182747340399664476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_5
+      name: Quitter__5
       rect:
         serializedVersion: 2
-        x: 501
-        y: 124
-        width: 542
-        height: 930
-      alignment: 9
-      pivot: {x: 0.57204944, y: 0.5344872}
+        x: 151
+        y: 15
+        width: 25
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b596ea734d29b160800000000000000
-      internalID: 7041709260218471857
+      spriteID: 0bf2836c0cc36ed70800000000000000
+      internalID: 9072005298041401264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_6
+      name: Quitter__6
       rect:
         serializedVersion: 2
-        x: 1045
-        y: 81
-        width: 323
-        height: 973
-      alignment: 9
-      pivot: {x: 0.76929164, y: 0.55663425}
+        x: 254
+        y: 15
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a94174890f0629bd0800000000000000
-      internalID: -2624929046340365158
+      spriteID: ae1e55ad0dc1dbf10800000000000000
+      internalID: 2287015869115916778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pp-marche_7
+      name: Quitter__7
       rect:
         serializedVersion: 2
-        x: 1391
-        y: 57
-        width: 375
-        height: 999
-      alignment: 9
-      pivot: {x: 0.5858203, y: 0.5642084}
+        x: 297
+        y: 15
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8668231ca75ca3790800000000000000
-      internalID: -7549504694315219352
+      spriteID: 61b6e876a5ebef2b0800000000000000
+      internalID: -5548788395380151530
       vertices: []
       indices: 
       edges: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a5b8c55472a8e5e459ce3fad9321639d
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pp-marche_0: 1315096015805180193
-      pp-marche_1: 3196649348534091402
-      pp-marche_2: 3217895094501101661
-      pp-marche_3: -6973652986494778643
-      pp-marche_4: -327343156508568614
-      pp-marche_5: 7041709260218471857
-      pp-marche_6: -2624929046340365158
-      pp-marche_7: -7549504694315219352
+      Quitter__0: 6012208166218866068
+      Quitter__1: 8812637215998797890
+      Quitter__2: -6334259992486896082
+      Quitter__3: -1771526273448656084
+      Quitter__4: -2182747340399664476
+      Quitter__5: 9072005298041401264
+      Quitter__6: 2287015869115916778
+      Quitter__7: -5548788395380151530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
