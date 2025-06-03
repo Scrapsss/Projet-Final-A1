@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class DeactivateLightSource : MonoBehaviour
 {
     [SerializeField] private Light2D LightSource;
+    [SerializeField] private GameObject VisualFeedBack;
     private Color nativeColor;
     private Color endColor;
 
@@ -53,7 +54,16 @@ public class DeactivateLightSource : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            VisualFeedBack.SetActive(true);
             collision.gameObject.GetComponent<PlayerPower>().CanDeactivateLightSource(this);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            VisualFeedBack.SetActive(false);
         }
     }
 }
