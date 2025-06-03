@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: a615fc6f28d6ba04f8068445d40a3f8a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1580405392468863610
+    second: Obsidian_Faith_0
+  - first:
+      213: -2586749653293221582
+    second: Obsidian_Faith_1
+  - first:
+      213: 4708041514273588844
+    second: Obsidian_Faith_2
+  - first:
+      213: 487431051989312185
+    second: Obsidian_Faith_3
+  - first:
+      213: -3292337478724825297
+    second: Obsidian_Faith_4
+  - first:
+      213: -5163370671121934294
+    second: Obsidian_Faith_5
+  - first:
+      213: -5847397769073485052
+    second: Obsidian_Faith_6
+  - first:
+      213: 1521459086510034705
+    second: Obsidian_Faith_7
+  - first:
+      213: -6200102046760353999
+    second: Obsidian_Faith_8
+  - first:
+      213: -3600232227194542951
+    second: Obsidian_Faith_9
+  - first:
+      213: 7254164126018321406
+    second: Obsidian_Faith_10
+  - first:
+      213: 6962707983128022183
+    second: Obsidian_Faith_11
+  - first:
+      213: -7802074146216471777
+    second: Obsidian_Faith_12
+  - first:
+      213: 1908696454978249330
+    second: Obsidian_Faith_13
+  - first:
+      213: -2727484008478801623
+    second: Obsidian_Faith_14
+  - first:
+      213: 4911580335830858743
+    second: Obsidian_Faith_15
+  - first:
+      213: 7166659935045793551
+    second: Obsidian_Faith_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Obsidian_Faith_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 27
+        width: 102
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68518cc3ba5411ae0800000000000000
+      internalID: -1580405392468863610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_1
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 27
+        width: 54
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239b79045e40a1cd0800000000000000
+      internalID: -2586749653293221582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_2
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 102
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c66c11e10d2565140800000000000000
+      internalID: 4708041514273588844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 27
+        width: 63
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b2615295f3b3c600800000000000000
+      internalID: 487431051989312185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_4
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 102
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2fc6e3b1844f42d0800000000000000
+      internalID: -3292337478724825297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_5
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 27
+        width: 75
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a285b183bb50858b0800000000000000
+      internalID: -5163370671121934294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_6
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 102
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40b96f9b5bed9dea0800000000000000
+      internalID: -5847397769073485052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_7
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 27
+        width: 37
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f88b76afe4d1510800000000000000
+      internalID: 1521459086510034705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_8
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 27
+        width: 62
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f3dabb900d4f9a0800000000000000
+      internalID: -6200102046760353999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_9
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 27
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994e72d3dd7690ec0800000000000000
+      internalID: -3600232227194542951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_10
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 27
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efb34b1a6d7fba460800000000000000
+      internalID: 7254164126018321406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_11
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 27
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac4f19450280a060800000000000000
+      internalID: 6962707983128022183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_12
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 27
+        width: 64
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f131283b6e679b390800000000000000
+      internalID: -7802074146216471777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_13
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 27
+        width: 67
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 272a607205d0d7a10800000000000000
+      internalID: 1908696454978249330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_14
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 27
+        width: 64
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9210010ceb7062ad0800000000000000
+      internalID: -2727484008478801623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_15
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 27
+        width: 30
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fbfdf2fa40792440800000000000000
+      internalID: 4911580335830858743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obsidian_Faith_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 818
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f07bd668d37157360800000000000000
+      internalID: 7166659935045793551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Obsidian_Faith_0: -1580405392468863610
+      Obsidian_Faith_1: -2586749653293221582
+      Obsidian_Faith_10: 7254164126018321406
+      Obsidian_Faith_11: 6962707983128022183
+      Obsidian_Faith_12: -7802074146216471777
+      Obsidian_Faith_13: 1908696454978249330
+      Obsidian_Faith_14: -2727484008478801623
+      Obsidian_Faith_15: 4911580335830858743
+      Obsidian_Faith_16: 7166659935045793551
+      Obsidian_Faith_2: 4708041514273588844
+      Obsidian_Faith_3: 487431051989312185
+      Obsidian_Faith_4: -3292337478724825297
+      Obsidian_Faith_5: -5163370671121934294
+      Obsidian_Faith_6: -5847397769073485052
+      Obsidian_Faith_7: 1521459086510034705
+      Obsidian_Faith_8: -6200102046760353999
+      Obsidian_Faith_9: -3600232227194542951
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
